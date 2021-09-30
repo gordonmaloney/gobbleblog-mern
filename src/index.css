@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo&Black&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+
+
+body {
+  background-color: #0d0d0d;
+  color: "white";
+  margin: 0;
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1400' height='800' preserveAspectRatio='none' viewBox='0 0 1400 800'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1246%26quot%3b)' fill='none'%3e%3crect width='1400' height='800' x='0' y='0' fill='url(%23SvgjsLinearGradient1247)'%3e%3c/rect%3e%3cpath d='M344.8751013714638 207.85870208754787L145.3458049917566 176.2563661520994 113.74346905630813 375.78566253180657 313.27276543601533 407.3879984672551z' fill='rgba(55%2c 61%2c 67%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1149.384512355735-12.688501320051376L1176.3690861692648 140.3486215587519 1302.4216352345384-39.67307513358125z' fill='rgba(55%2c 61%2c 67%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M402.7686957665054 755.2542686692847L611.8441329470277 639.3618614036765 286.8762885008972 546.1788314887624z' fill='rgba(55%2c 61%2c 67%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1459.941%2c886.937C1530.59%2c884.852%2c1608.087%2c873.57%2c1643.105%2c812.174C1677.909%2c751.154%2c1646.991%2c679.519%2c1613.449%2c617.796C1577.699%2c552.009%2c1534.569%2c481.17%2c1459.941%2c475.121C1376.88%2c468.389%2c1298.225%2c516.833%2c1256.291%2c588.847C1214.093%2c661.315%2c1209.734%2c754.326%2c1257.039%2c823.569C1299.879%2c886.275%2c1384.031%2c889.178%2c1459.941%2c886.937' fill='rgba(55%2c 61%2c 67%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M847.677%2c474.893C877.12%2c475.604%2c911.595%2c479.455%2c927.613%2c454.74C944.427%2c428.797%2c933.705%2c394.525%2c916.344%2c368.945C901.146%2c346.552%2c874.726%2c336.095%2c847.677%2c336.959C822.216%2c337.773%2c800.015%2c351.692%2c786.215%2c373.104C770.952%2c396.786%2c759.593%2c426.919%2c774.156%2c451.037C788.43%2c474.677%2c820.07%2c474.227%2c847.677%2c474.893' fill='rgba(55%2c 61%2c 67%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M716.97170550794 243.51515735079153L900.6394404340396 128.74681886086552 602.203367018014 59.84742242469193z' fill='rgba(55%2c 61%2c 67%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M171.18168453396197 505.6850496335025L197.45061282415858 291.74179734651943-42.76156775302107 479.4161213433059z' fill='rgba(55%2c 61%2c 67%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M323.64792274102047 24.84838218181494L428.24075332661175 141.0104887915822 544.402859936379 36.41765820599092 439.8100293507877-79.74444840377635z' fill='rgba(55%2c 61%2c 67%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1246'%3e%3crect width='1400' height='800' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='100%25' y1='50%25' x2='0%25' y2='50%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1247'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(13%2c 13%2c 13%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+
+.dzu-dropzone {
+  width: 80% !important;
+  overflow: hidden !important;
+  color: white !important;
+  margin-bottom: 50px !important;
+  padding: 0px !important;
+  height: 70px !important;
+  min-height: 10px !important;
+}
+
+.dzu-inputLabel {
+  padding: 0 !important;
+  margin: 0 !important;
+  color: white !important;
+  font-family: "Lato" !important;
+  height: 60px !important;
+  font-weight: 500 !important;
+}
