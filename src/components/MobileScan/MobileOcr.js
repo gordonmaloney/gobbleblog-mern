@@ -3,7 +3,7 @@ import Dropzone from "react-dropzone-uploader";
 import { createWorker } from "tesseract.js";
 import "react-dropzone-uploader/dist/styles.css";
 
-export const App = ({  }) => {
+export const App = ({ setMessage }) => {
 
   const [orderText, setOrderText] = useState("");
 
@@ -22,7 +22,7 @@ export const App = ({  }) => {
     setText(" ");
 
     setText(text);
-    //setMessage(text)
+    setMessage(text)
     console.log("text", text);
   }, [text]);
 

@@ -7,6 +7,9 @@ import { Menubar } from "./Menubar";
 import { Template } from "./Template";
 import { Review } from "./Review";
 import { App } from "./OCR";
+import {MobileScan} from './MobileScan/MobileScan'
+import { MobileScreen } from "./MobileScan/MobileScreen";
+
 export const Main = () => {
 
 
@@ -18,6 +21,7 @@ export const Main = () => {
 </div>
       <BrowserRouter>
         <Switch>
+          
           <Route exact path="/">
             <Template
               body={
@@ -65,6 +69,10 @@ export const Main = () => {
 
           <Route path="/review" component={Review} />
           <Route path="/ocr" component={App} />
+
+
+          <Route path="/mobile" component={MobileScan} />
+          <Route path="/mobilescreen" component={MobileScreen} />
 
         </Switch>
       </BrowserRouter>
