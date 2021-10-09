@@ -17,7 +17,7 @@ export const MobileScan = ({location}) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
-    const ENDPOINT = 'http://localhost:5000';
+    const ENDPOINT = 'https://gobbleblog.herokuapp.com/';
 
     useEffect(() => {
         const {name, room} = queryString.parse(location.search) 
@@ -64,7 +64,7 @@ export const MobileScan = ({location}) => {
 
     return (
         <div>
-            <QRCode includeMargin="true" value={`http://localhost:3000/mobilescreen?name=mobileclient&room=room`} />
+            <QRCode includeMargin="true" value={`https://gobbleblog.netlify.app/mobilescreen?name=mobileclient&room=room`} />
 
             <MobileInput message={message} setMessage={setMessage} sendMessage={sendMessage}/>
 

@@ -2,12 +2,10 @@ import React, {useState, useEffect} from 'react';
 import QRCode from 'qrcode.react';
 import io from "socket.io-client";
 import queryString from 'query-string';
-import { MobileInput } from './MobileInput';
-import { App } from "./MobileOcr";
 
 let socket;
 
-export const MobileScreen = ({location}) => {
+export const ScanSocket = ({location, importText}) => {
 
     const [mobileScan, setMobileScan] = useState('');
 
@@ -20,7 +18,8 @@ export const MobileScreen = ({location}) => {
     const ENDPOINT = 'https://gobbleblog.herokuapp.com/';
 
     useEffect(() => {
-        const {name, room} = queryString.parse(location.search) 
+        const name = "name"
+        const room = "room" 
         
         socket = io(ENDPOINT);
    
@@ -35,7 +34,7 @@ export const MobileScreen = ({location}) => {
              
              socket.off();
          }
-       }, [ENDPOINT, location.search])
+       }, [ENDPOINT, location])
    
    
        useEffect(() => {
@@ -48,12 +47,8 @@ export const MobileScreen = ({location}) => {
            });
        }, []);
    
-
-      console.log(messages)
-       //message.text && message.text.length > 20 && sendMessage(message)
-
        const sendMessage = (event) => {
-           //event.preventDefault();
+           event.preventDefault();
    
            if(message) {
                socket.emit('sendMessage', message, () => setMessage(''))
@@ -63,19 +58,19 @@ export const MobileScreen = ({location}) => {
 
     useEffect(() => {
         console.log("test")
-       messages.map(newmessage => newmessage.user === "mobileclient" && setMobileScan(newmessage.text))
+       messages.map(newmessage => newmessage.user === "mobileclient" && //setMobileScan(newmessage.text))
+                                                                        importText(newmessage.text))
     }, [messages])
+
+
 
     return (
         <div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <App setMessage={setMessage} />
-            <MobileInput message={message} setMessage={setMessage} sendMessage={sendMessage}/>
+            <QRCode includeMargin="true" value={`https://gobbleblog.netlify.app/mobilescreen?name=mobileclient&room=room`} />
+
+
+            {//<App setMessage={setMessage} />
+            }
         </div>
     )
 }

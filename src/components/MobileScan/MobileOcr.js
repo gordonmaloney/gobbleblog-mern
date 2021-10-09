@@ -51,7 +51,7 @@ export const App = ({ setMessage }) => {
   const handleChangeStatus = ({ meta }, status) => {
     if (status === "headers_received") {
       //alert("Uploaded");
-      setText("Scanning...");
+      setText("Still scanning...");
       ExtractTextFromImage(meta.previewUrl);
     } else if (status === "aborted") {
       alert("Hmm... something's gone wrong");

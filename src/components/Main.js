@@ -9,6 +9,8 @@ import { Review } from "./Review";
 import { App } from "./OCR";
 import {MobileScan} from './MobileScan/MobileScan'
 import { MobileScreen } from "./MobileScan/MobileScreen";
+import { AllGobbles } from "./AllGobbles";
+
 
 export const Main = () => {
 
@@ -23,6 +25,10 @@ export const Main = () => {
         <Switch>
           
           <Route exact path="/">
+
+
+<AllGobbles />
+
             <Template
               body={
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."

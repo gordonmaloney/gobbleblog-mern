@@ -5,6 +5,8 @@ import { App } from "./OCR";
 import { useDispatch } from "react-redux";
 import { createPost } from "../actions/posts";
 
+import { Scan } from './Scan'
+
 export const Review = () => {
   const dispatch = useDispatch();
   const [postData, setPostData] = useState({
@@ -133,6 +135,13 @@ export const Review = () => {
                 }
               />
             </div>
+
+            <Scan importText={(e) =>
+                  setPostData({ ...postData, order: e })
+                }
+                />
+
+
           </Box>
           <button onClick={handleSubmit}>Submit</button>
           <button onClick={() => console.log(postData)}>log</button>
