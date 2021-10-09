@@ -5,7 +5,7 @@ import { App } from "./OCR";
 import { useDispatch } from "react-redux";
 import { createPost } from "../actions/posts";
 
-import { Scan } from './Scan'
+import { Scan } from "./Scan";
 
 export const Review = () => {
   const dispatch = useDispatch();
@@ -72,7 +72,6 @@ export const Review = () => {
         }}
       >
         <CardContent sx={{ paddingTop: 5, fontSize: 25 }}>
-
           <Box
             component="form"
             sx={{ "& .MuiTextField-root": { marginTop: 5, width: "100%" } }}
@@ -93,19 +92,18 @@ export const Review = () => {
                 }
               />
             </div>
-
+            
             <center>
-            <Rating
-              name="rating"
-              value={postData.rating}
-              sx={{ color: "white", fontSize: 50 }}
-              size="large"
-              onChange={(e) =>
-                setPostData({ ...postData, rating: e.target.value })
-              }
-            />
-          </center>
-          
+              <Rating
+                name="rating"
+                value={postData.rating}
+                sx={{ color: "white", fontSize: 50 }}
+                size="large"
+                onChange={(e) =>
+                  setPostData({ ...postData, rating: e.target.value })
+                }
+              />
+            </center>
             <div>
               <TextField
                 fullWidth
@@ -120,7 +118,6 @@ export const Review = () => {
                 }
               />
             </div>
-
             <div>
               <TextField
                 fullWidth
@@ -135,16 +132,9 @@ export const Review = () => {
                 }
               />
             </div>
-
-            <Scan importText={(e) =>
-                  setPostData({ ...postData, order: e })
-                }
-                />
-
-
+            <Scan importText={(e) => setPostData({ ...postData, order: e })} />
           </Box>
           <button onClick={handleSubmit}>Submit</button>
-          <button onClick={() => console.log(postData)}>log</button>
         </CardContent>
 
         <Dictaphone changeText={dictUpdate} />

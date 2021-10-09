@@ -1,33 +1,43 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import { Home } from "./Home";
-import { Card, Rating, CardContent, Grid, Fab, AppBar, Toolbar } from "@mui/material";
+import {
+  Card,
+  Rating,
+  CardContent,
+  Grid,
+  Fab,
+  AppBar,
+  Toolbar,
+} from "@mui/material";
 
 import { Menubar } from "./Menubar";
 import { Template } from "./Template";
 import { Review } from "./Review";
 import { App } from "./OCR";
-import {MobileScan} from './MobileScan/MobileScan'
+import { MobileScan } from "./MobileScan/MobileScan";
 import { MobileScreen } from "./MobileScan/MobileScreen";
 import { AllGobbles } from "./AllGobbles";
-
+import { DisplayGobble } from "./DisplayGobble";
 
 export const Main = () => {
-
-
-
   return (
     <div>
-          <div style={{ position: "sticky", top: 0, color: "white", marginBottom: "-100px" }}>
-      <Menubar />
-</div>
       <BrowserRouter>
+        <div
+          style={{
+            position: "sticky",
+            top: 0,
+            color: "white",
+            marginBottom: "-100px",
+          }}
+        >
+          <Menubar />
+        </div>
+
         <Switch>
-          
           <Route exact path="/">
-
-
-<AllGobbles />
+            <AllGobbles />
 
             <Template
               body={
@@ -57,7 +67,7 @@ export const Main = () => {
               rating={5}
             />
 
-<Template
+            <Template
               body={
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
               }
@@ -70,16 +80,14 @@ export const Main = () => {
               head={"place 2"}
               rating={5}
             />
-
           </Route>
 
           <Route path="/review" component={Review} />
           <Route path="/ocr" component={App} />
 
-
           <Route path="/mobile" component={MobileScan} />
           <Route path="/mobilescreen" component={MobileScreen} />
-
+          <Route path="/gobble/:id" component={DisplayGobble} />
         </Switch>
       </BrowserRouter>
     </div>
