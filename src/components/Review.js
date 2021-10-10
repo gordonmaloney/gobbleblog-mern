@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Card, Rating, CardContent, TextField, Box } from "@mui/material";
-import { Dictaphone } from "./Dictaphone";
 import { App } from "./OCR";
 import { useDispatch } from "react-redux";
 import { createPost } from "../actions/posts";
@@ -8,8 +7,17 @@ import { createPost } from "../actions/posts";
 import { Scan } from "./Scan";
 import { ReviewDict } from "./Dictaphones/reviewDict";
 import { OrderDict } from "./Dictaphones/orderDict";
+import MicIcon from "@mui/icons-material/Mic";
+import UploadFileIcon from "@mui/icons-material/UploadFile";
+import Button from "@mui/material/Button";
+import SendToMobileIcon from "@mui/icons-material/SendToMobile";
 
 export const Review = () => {
+  const [fieldDict, setFieldDict] = useState(null);
+
+  const [uploadBox, setUploadBox] = useState(false);
+  const [mobileQR, setMobileQR] = useState(false);
+
   const dispatch = useDispatch();
   const [postData, setPostData] = useState({
     restaurant: "",
@@ -33,14 +41,14 @@ export const Review = () => {
   };
 
   return (
-    <div style={{ marginLeft: "10%" }}>
+    <div style={{maxWidth: "700px", marginLeft: "auto", marginRight: "auto"}}>
       <Card
         style={{
           backgroundColor: "#04b2d9",
           color: "white",
           fontFamily: "Archivo Black",
           fontSize: 50,
-          marginLeft: 225,
+          marginLeft: "20%",
           border: "5px solid white",
           width: "fit-content",
           maxWidth: 450,
@@ -63,9 +71,10 @@ export const Review = () => {
         sx={{
           backgroundColor: "#04b2d9",
           color: "white",
-          width: 600,
+          width: "80%",
+          maxWidth: "700px",
           height: "fit-content",
-          marginLeft: 20,
+          marginLeft: "10%",
           marginRight: 5,
           marginBottom: 5,
           marginTop: "-40px",
@@ -94,7 +103,7 @@ export const Review = () => {
                 }
               />
             </div>
-            
+
             <center>
               <Rating
                 name="rating"
@@ -113,6 +122,7 @@ export const Review = () => {
                 label="How was it?"
                 multiline
                 rows={4}
+                sx={{ marginBottom: 2 }}
                 size="large"
                 value={postData.review}
                 onInput={(e) =>
@@ -120,8 +130,15 @@ export const Review = () => {
                 }
               />
             </div>
-            <ReviewDict changeReview={dictUpdate} />      
-                  
+
+            {fieldDict === "review" ? (
+              <ReviewDict changeReview={dictUpdate} />
+            ) : (
+              <center>
+                <MicIcon onClick={() => setFieldDict("review")} />
+              </center>
+            )}
+
             <div>
               <TextField
                 fullWidth
@@ -129,6 +146,7 @@ export const Review = () => {
                 label="What did you get?"
                 multiline
                 rows={4}
+                sx={{ marginBottom: 2 }}
                 size="large"
                 value={postData.order}
                 onInput={(e) =>
@@ -136,16 +154,48 @@ export const Review = () => {
                 }
               />
             </div>
-            <OrderDict changeOrder={orderUpdate} />
 
-            <Scan importText={(e) => setPostData({ ...postData, order: e })} />
+            <center>
+              {fieldDict === "order" ? (
+                <OrderDict changeOrder={orderUpdate} />
+              ) : (
+                <MicIcon onClick={() => setFieldDict("order")} />
+              )}
+
+              
+                <SendToMobileIcon onClick={() => setMobileQR(!mobileQR)} />
+              
+
+              {uploadBox ? (
+                <>
+                  <UploadFileIcon onClick={() => setUploadBox(false)} />
+                  <App changeText={orderUpdate} />
+                </>
+              ) : (
+                <UploadFileIcon onClick={() => setUploadBox(true)} />
+              )}
+
+              {mobileQR && (
+                <span onClick={() => setMobileQR(!mobileQR)}>
+                  <Scan
+                    importText={(e) => setPostData({ ...postData, order: e })}
+                  />
+                </span>
+              )}
+            </center>
           </Box>
-          <button onClick={handleSubmit}>Submit</button>
+
+
+          <br />
+          <Button
+            fullWidth
+            variant="contained"
+            size="large"
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>
         </CardContent>
-
-
-        <Dictaphone changeText={dictUpdate} />
-        <App changeText={orderUpdate} />
       </Card>
     </div>
   );

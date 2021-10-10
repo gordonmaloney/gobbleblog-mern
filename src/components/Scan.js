@@ -1,25 +1,28 @@
-import React, {useState, useEffect} from 'react';
-import QRCode from 'qrcode.react';
+import React, { useState, useEffect } from "react";
+import QRCode from "qrcode.react";
 import io from "socket.io-client";
-import queryString from 'query-string';
-import { ScanSocket } from './ScanSocket';
+import queryString from "query-string";
+import { ScanSocket } from "./ScanSocket";
 //import { MobileInput } from './MobileInput';
 //import { App } from "./MobileOcr";
+import { CardContent } from "@mui/material";
+import SendToMobileIcon from "@mui/icons-material/SendToMobile";
 
 let socket;
 
-export const Scan = ({location, importText}) => {
-    const [show, setShow] = useState(false)
+export const Scan = ({ location, importText }) => {
 
-    return (
-        <div>
-            <button onClick={(e)=>{e.preventDefault(); setShow(!show)}}>Scan from your phone</button>
+  return (
+    <div>
+        <center>
 
-            {show &&
-            //<QRCode includeMargin="true" value={`https://gobbleblog.netlify.app/mobilescreen?name=mobileclient&room=room`} />
-            <ScanSocket importText={importText} />
+
+          
+            {//<QRCode includeMargin="true" value={`https://gobbleblog.netlify.app/mobilescreen?name=mobileclient&room=room`} />
             }
-        
-        </div>
-    )
-}
+            <ScanSocket importText={importText} />
+          
+        </center>
+    </div>
+  );
+};

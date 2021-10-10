@@ -27,14 +27,16 @@ export const OrderDict = ({ changeText, changeOrder, changeReview }) => {
     changeOrder(transcript);
   }, [transcript]);
 
+  useEffect(() => {
+    SpeechRecognition.startListening()
+  }, []);
+
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
 
   return (
-    <div>
-      <CardContent sx={{ paddingTop: 5, fontSize: 25 }}>
-        <center>
+    <>
  
 
 
@@ -42,7 +44,7 @@ export const OrderDict = ({ changeText, changeOrder, changeReview }) => {
             <>
               {" "}
               <span onClick={SpeechRecognition.startListening}>
-                <MicIcon fontSize="normal" /> order
+                <MicIcon fontSize="normal" />
               </span>
             </>
           ) : (
@@ -54,19 +56,6 @@ export const OrderDict = ({ changeText, changeOrder, changeReview }) => {
           )}
 
 
-{/*
-          <br />
-          {transcript && (
-            <>
-            <span onClick={resetTranscript}>
-              <RestartAltIcon fontSize="large" />
-              Re-record
-            </span>
-            </>
-          )}
-          */}
-        </center>
-      </CardContent>
-    </div>
+    </>
   );
 };

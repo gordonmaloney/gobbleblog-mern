@@ -4,8 +4,9 @@ import { useEffect } from "react";
 import MicIcon from "@mui/icons-material/Mic";
 import MicOffIcon from "@mui/icons-material/MicOff";
 
-import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
-
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
 export const ReviewDict = ({ changeText, changeOrder, changeReview }) => {
   const [reviewText, setReviewText] = useState("");
@@ -20,8 +21,12 @@ export const ReviewDict = ({ changeText, changeOrder, changeReview }) => {
   useEffect(() => {
     setReviewText(" ");
 
-    changeReview(transcript)
+    changeReview(transcript);
   }, [transcript]);
+
+  useEffect(() => {
+    SpeechRecognition.startListening()
+  }, []);
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
@@ -29,24 +34,22 @@ export const ReviewDict = ({ changeText, changeOrder, changeReview }) => {
 
   return (
     <div>
-      <CardContent sx={{ paddingTop: 5, fontSize: 25 }}>
-        <center>
-          {!listening ? (
-            <>
-              {" "}
-              <span onClick={SpeechRecognition.startListening}>
-                <MicIcon fontSize="normal" /> review
-              </span>
-            </>
-          ) : (
-            <>
-              <span onClick={SpeechRecognition.stopListening}>
-                <MicOffIcon fontSize="normal" />
-              </span>
-            </>
-          )}
-        </center>
-      </CardContent>
+      <center>
+        {!listening ? (
+          <>
+            {" "}
+            <span onClick={SpeechRecognition.startListening}>
+              <MicIcon fontSize="normal" />
+            </span>
+          </>
+        ) : (
+          <>
+            <span onClick={SpeechRecognition.stopListening}>
+              <MicOffIcon fontSize="normal" />
+            </span>
+          </>
+        )}
+      </center>
     </div>
   );
 };

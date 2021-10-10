@@ -4,14 +4,14 @@ import { Add } from "@mui/icons-material";
 
 export const Template = ({ head, body, rating, order }) => {
   return (
-    <div style={{ marginLeft: "10%" }}>
+    <div style={{width: "80%", marginLeft: "auto", marginRight: "auto"}}>
       <Card
         style={{
           backgroundColor: "#04b2d9",
           color: "white",
           fontFamily: "Archivo Black",
           fontSize: 50,
-          marginLeft: 225,
+          marginLeft: "10%",
           border: "5px solid white",
           width: "fit-content",
           maxWidth: 450,
@@ -30,20 +30,20 @@ export const Template = ({ head, body, rating, order }) => {
         {head}
       </Card>
 
-      <Grid container alignItems="center">
-        <Grid item sx={{ zIndex: "8" }}>
+      <Grid container alignItems="center" spacing={0}>
+        <Grid item md={6} sx={{ zIndex: "8" }}>
           <Card
             sx={{
               backgroundColor: "#04b2d9",
               color: "white",
-              width: 600,
+              width: "100%",
               height: "fit-content",
-              marginLeft: 20,
+              marginLeft: "10%",
               marginRight: 5,
               marginBottom: 5,
               marginTop: "-40px",
               border: "5px solid white",
-              paddingTop: 2,
+              paddingTop: 2
             }}
           >
             <CardContent sx={{ paddingTop: 5, fontSize: 25 }}>
@@ -66,7 +66,8 @@ export const Template = ({ head, body, rating, order }) => {
           </Card>
         </Grid>
 
-        <Grid item>
+        <Grid item md={6}>
+          <center>
           <Fab
             sx={{
               backgroundColor: "#04b2d9",
@@ -108,6 +109,7 @@ export const Template = ({ head, body, rating, order }) => {
           >
             !
           </Fab>
+          </center>
         </Grid>
       </Grid>
     </div>
