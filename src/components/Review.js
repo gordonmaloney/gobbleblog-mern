@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { createPost } from "../actions/posts";
 
 import { Scan } from "./Scan";
+import { ReviewDict } from "./Dictaphones/reviewDict";
+import { OrderDict } from "./Dictaphones/orderDict";
 
 export const Review = () => {
   const dispatch = useDispatch();
@@ -118,6 +120,8 @@ export const Review = () => {
                 }
               />
             </div>
+            <ReviewDict changeReview={dictUpdate} />      
+                  
             <div>
               <TextField
                 fullWidth
@@ -132,10 +136,13 @@ export const Review = () => {
                 }
               />
             </div>
+            <OrderDict changeOrder={orderUpdate} />
+
             <Scan importText={(e) => setPostData({ ...postData, order: e })} />
           </Box>
           <button onClick={handleSubmit}>Submit</button>
         </CardContent>
+
 
         <Dictaphone changeText={dictUpdate} />
         <App changeText={orderUpdate} />

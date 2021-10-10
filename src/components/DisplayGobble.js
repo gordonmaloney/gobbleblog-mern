@@ -7,13 +7,17 @@ export const DisplayGobble = (props) => {
 
     const gobble = gobbles.filter((gobbles) => gobbles._id === props.match.params.id)[0];
 
+    console.log(gobble)
     return (
         <div>
+            {gobbles.length > 0 &&
             <Template
               body={gobble.review}
               head={gobble.restaurant}
               rating={gobble.rating}
+              order={gobble.order}
             />
+            }
         </div>
     )
 }
