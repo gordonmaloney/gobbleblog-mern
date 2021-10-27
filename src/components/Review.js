@@ -13,8 +13,8 @@ import Button from "@mui/material/Button";
 import SendToMobileIcon from "@mui/icons-material/SendToMobile";
 
 export const Review = () => {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const [fieldDict, setFieldDict] = useState(null);
-
   const [uploadBox, setUploadBox] = useState(false);
   const [mobileQR, setMobileQR] = useState(false);
 
@@ -24,6 +24,7 @@ export const Review = () => {
     review: "",
     rating: 0,
     order: "",
+    userId: user?.result._id
   });
 
   const handleSubmit = (e) => {
