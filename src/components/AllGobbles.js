@@ -13,9 +13,11 @@ export const AllGobbles = () => {
 
   const posts = useSelector((state) => state.posts);
 
+  const reversedPosts = posts.reverse()
+
   return (
     <div>
-      {posts.reverse().map((post) => {
+      {reversedPosts && posts.map((post) => {
         return (
           <Link to={`/gobble/${post._id}`}>
             <Template

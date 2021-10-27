@@ -57,8 +57,10 @@ export const Template = ({ head, body, rating, order }) => {
                 />
               </center>
 
-              {body}
-              <hr />
+            {!order ? <div className="elipsis-three-line">{body}</div> : <>{body}</>}
+
+
+              {order && <hr />}
             </CardContent>
             <CardContent sx={{ paddingTop: 0, fontSize: 15, whiteSpace: "pre-wrap"}}>
               {order}

@@ -76,6 +76,8 @@ export const MobileScreen = ({location}) => {
             <br />
             <App setMessage={setMessage} />
             <MobileInput message={message} setMessage={setMessage} sendMessage={sendMessage}/>
+            
+
         </div>
     )
 }

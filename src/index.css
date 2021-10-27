@@ -44,3 +44,10 @@ background-size: cover;
   height: 60px !important;
   font-weight: 500 !important;
 }
+
+.elipsis-three-line {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}

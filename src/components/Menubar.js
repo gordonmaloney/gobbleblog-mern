@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 import { Fab, AppBar, Toolbar, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Review } from "./Review";
+import { Login } from "./Login";
 
-export const Menubar = () => {
+export const Menubar = (props) => {
   const [scroll, setScroll] = useState(0);
 
   window.onscroll = function () {
     setScroll(document.documentElement.scrollTop);
   };
+
+
+  useEffect(() => {
+    console.log(window.document.body.offsetHeight)
+}, [])
+
 
   const [scrollShow, setScrollShow] = useState(true);
 
@@ -71,6 +78,9 @@ export const Menubar = () => {
                 +
               </Fab>
             </Link>
+
+            <Login />
+            
           </Toolbar>
         </AppBar>
       </>

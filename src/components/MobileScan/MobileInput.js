@@ -15,9 +15,11 @@ export const MobileInput = ({message, setMessage, sendMessage}) => {
 */}
 
 <center>
+      {/*
       <button className="sendButton" onClick={(event) => {event.preventDefault(); sendMessage(event)} } >
         Send
       </button>
+      */}
   </center>
 
     </div>

@@ -8,6 +8,7 @@ export const App = ({ setMessage }) => {
   const [orderText, setOrderText] = useState("");
 
   const [text, setText] = useState(null);
+  const [successMsg, setSuccessMsg] = useState(null);
 
   const [imageUrl] = useState(null);
 
@@ -40,6 +41,7 @@ export const App = ({ setMessage }) => {
     } = await worker.recognize(imageUrl);
     setText(text);
     await worker.terminate();
+    setSuccessMsg("Your image has been scanned. You can close this window now.")
   };
 
   const getUploadParams = () => {
@@ -85,6 +87,10 @@ export const App = ({ setMessage }) => {
         />
       </div>
 
+
+<h4 style={{ color: "white" }}>{successMsg}</h4>
+
+{/*
       <div style={{ color: "white" }}>
         {text && (
           <h1>
@@ -94,6 +100,7 @@ export const App = ({ setMessage }) => {
           </h1>
         )}{" "}
       </div>
+*/}
     </React.Fragment>
   );
 };
