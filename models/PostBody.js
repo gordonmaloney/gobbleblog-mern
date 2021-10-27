@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
+  userId: String,
   restaurant: String,
   review: String,
   rating: Number,
