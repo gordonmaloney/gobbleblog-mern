@@ -4,7 +4,7 @@ export const MobileInput = ({message, setMessage, sendMessage}) => {
 
 
   useEffect(() => {
-    message && message.length > 20 && sendMessage()
+    message && message.length > 13 && sendMessage()
   }, [message]);
 
   return (

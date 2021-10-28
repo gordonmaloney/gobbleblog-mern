@@ -4,7 +4,6 @@ import { createWorker } from "tesseract.js";
 import "react-dropzone-uploader/dist/styles.css";
 
 export const App = ({ setMessage }) => {
-
   const [orderText, setOrderText] = useState("");
 
   const [text, setText] = useState(null);
@@ -18,15 +17,13 @@ export const App = ({ setMessage }) => {
     }
   });
 
-
   useEffect(() => {
     setText(" ");
 
     setText(text);
-    setMessage(text)
+    setMessage(text);
     console.log("text", text);
   }, [text]);
-
 
   const worker = createWorker({
     logger: (m) => console.log(m),
@@ -41,7 +38,9 @@ export const App = ({ setMessage }) => {
     } = await worker.recognize(imageUrl);
     setText(text);
     await worker.terminate();
-    setSuccessMsg("Your image has been scanned. You can close this window now.")
+    setSuccessMsg(
+      "Your image has been scanned. You can close this window now."
+    );
   };
 
   const getUploadParams = () => {
@@ -64,7 +63,7 @@ export const App = ({ setMessage }) => {
     <React.Fragment>
       <div>
         <Dropzone
-        style={{width: "80%", overflow: "hidden"}}
+          style={{ width: "80%", overflow: "hidden" }}
           getUploadParams={getUploadParams}
           onChangeStatus={handleChangeStatus}
           maxFiles={1}
@@ -87,10 +86,11 @@ export const App = ({ setMessage }) => {
         />
       </div>
 
+      <center>
+        <h2 style={{ color: "white" }}>{successMsg}</h2>
+      </center>
 
-<h4 style={{ color: "white" }}>{successMsg}</h4>
-
-{/*
+      {/*
       <div style={{ color: "white" }}>
         {text && (
           <h1>

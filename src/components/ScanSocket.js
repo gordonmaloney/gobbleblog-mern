@@ -16,6 +16,7 @@ export const ScanSocket = ({location, importText}) => {
     const [messages, setMessages] = useState([]);
 
     const ENDPOINT = 'https://gobbleblog.herokuapp.com/';
+    //const ENDPOINT = 'http://localhost:5000'
 
     useEffect(() => {
         const name = "name"

@@ -3,8 +3,10 @@ import { Fab, AppBar, Toolbar, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Review } from "./Review";
 import { Login } from "./Login";
+import { useLocation } from "react-router";
 
 export const Menubar = (props) => {
+  const location = useLocation();
   const [scroll, setScroll] = useState(0);
 
   window.onscroll = function () {
@@ -13,9 +15,11 @@ export const Menubar = (props) => {
 
 
   useEffect(() => {
-    console.log(window.document.body.offsetHeight)
-}, [])
+    console.log("height: ", window.document.body.offsetHeight)
+}, [scroll, location])
 
+
+const cutoffHeight = 1200
 
   const [scrollShow, setScrollShow] = useState(true);
 
@@ -32,7 +36,7 @@ export const Menubar = (props) => {
     setBarOpacity(1.6 - scroll / 200);
     setFabOpacity(-0.8 + scroll / 200);
 
-    scroll < 500 && setFabMarg(scroll / 5);
+    scroll < 500 && setFabMarg(scroll / 3);
     scroll < 700 && setFabMarg2(scroll / 7);
 
     fabMarg > 100 || (scroll > 500 && setFabMarg(100));
@@ -48,7 +52,7 @@ export const Menubar = (props) => {
             zIndex: 40,
             paddingLeft: "5%",
             borderBottom: "3px solid #0d0d0d",
-            opacity: barOpacity,
+            opacity:  window.document.body.offsetHeight > cutoffHeight ? barOpacity : 1,
             backgroundColor: "#04b2d9",
             paddingTop: 0,
             paddingBottom: 0,
@@ -58,7 +62,7 @@ export const Menubar = (props) => {
         >
           <Toolbar>
             <Link to={"/"}>
-              <h1 style={{ opacity: barOpacity - 0.3 }}>Gobbleblog</h1>
+              <h1 style={{ opacity: window.document.body.offsetHeight > cutoffHeight ? barOpacity - 0.3 : 1 }}>Gobbleblog</h1>
             </Link>
 
             <Link to={"./review"} style={{marginLeft: "auto"}}>
@@ -90,7 +94,7 @@ export const Menubar = (props) => {
           position: "sticky",
           top: 0,
           color: "white",
-          opacity: fabOpacity,
+          opacity: window.document.body.offsetHeight > cutoffHeight ? fabOpacity : 0,
           zIndex: "50",
         }}
       >
@@ -100,7 +104,7 @@ export const Menubar = (props) => {
               backgroundColor: "#04b2d9",
               border: "5px solid white",
               color: "white",
-              marginLeft: `${fabMarg - 40}px`,
+              marginLeft: window.document.body.offsetHeight > cutoffHeight ? `${fabMarg - 100}px` : '-150px',
               marginTop: "-10px",
               fontSize: 30,
               marginRight: 5,
@@ -120,7 +124,7 @@ export const Menubar = (props) => {
               backgroundColor: "#04b2d9",
               border: "5px solid white",
               color: "white",
-              marginLeft: `${fabMarg2 - 40}px`,
+              marginLeft: window.document.body.offsetHeight > cutoffHeight ? `${fabMarg - 100}px` : '-150px',
               marginTop: "50px",
               fontSize: 30,
               marginRight: 5,

@@ -17,7 +17,8 @@ export const MobileScan = ({location}) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
-    const ENDPOINT = 'https://gobbleblog.herokuapp.com/';
+    //const ENDPOINT = 'https://gobbleblog.herokuapp.com/';
+    const ENDPOINT = 'http://localhost:5000'
 
     useEffect(() => {
         const {name, room} = queryString.parse(location.search) 

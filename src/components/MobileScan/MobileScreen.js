@@ -18,6 +18,8 @@ export const MobileScreen = ({location}) => {
     const [messages, setMessages] = useState([]);
 
     const ENDPOINT = 'https://gobbleblog.herokuapp.com/';
+    //const ENDPOINT = 'http://localhost:5000'
+
 
     useEffect(() => {
         const {name, room} = queryString.parse(location.search) 
@@ -77,6 +79,7 @@ export const MobileScreen = ({location}) => {
             <App setMessage={setMessage} />
             <MobileInput message={message} setMessage={setMessage} sendMessage={sendMessage}/>
             
+
 
         </div>
     )
