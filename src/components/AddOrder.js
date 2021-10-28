@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, Rating, CardContent, TextField, Box } from "@mui/material";
 import { App } from "./OCR";
 import { useDispatch } from "react-redux";
-import { createPost } from "../actions/posts";
+import { updatePost } from "../actions/posts";
 
 import { Scan } from "./Scan";
 import { ReviewDict } from "./Dictaphones/reviewDict";
@@ -11,68 +11,45 @@ import MicIcon from "@mui/icons-material/Mic";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import Button from "@mui/material/Button";
 import SendToMobileIcon from "@mui/icons-material/SendToMobile";
-
-export const Review = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  const [fieldDict, setFieldDict] = useState(null);
-  const [uploadBox, setUploadBox] = useState(false);
-  const [mobileQR, setMobileQR] = useState(false);
-
-  const dispatch = useDispatch();
+import { useHistory } from "react-router";
 
 
-  const [postData, setPostData] = useState({
-    restaurant: "",
-    orders:
-      {review: "",
-      order: "",
-      rating: "",
-      date: new Date()},
-    userId: user?.result._id
-  });
+export const AddOrder = ({gobble}) => {
+    const history = useHistory();
+    const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(createPost(postData));
-  };
+    const [fieldDict, setFieldDict] = useState(null);
+    const [uploadBox, setUploadBox] = useState(false);
+    const [mobileQR, setMobileQR] = useState(false);
 
-  const dictUpdate = (e) => {
-    setPostData({ ...postData, review: e });
-  };
+    const [orderData, setOrderData] = useState({
+        order: "",
+        review: "",
+        rating: 0,
+        date: new Date()
+      });
 
-  const orderUpdate = (e) => {
-    setPostData({ ...postData, order: e });
-  };
+      const orderUpdate = (e) => {
+        setOrderData({ ...orderData, order: e });
+      };
 
+      const dictUpdate = (e) => {
+        setOrderData({ ...orderData, review: e });
+      };
 
-  return (
-    <div style={{maxWidth: "700px", marginLeft: "auto", marginRight: "auto"}}>
-      <Card
-        style={{
-          backgroundColor: "#04b2d9",
-          color: "white",
-          fontFamily: "Archivo Black",
-          fontSize: 50,
-          marginLeft: "20%",
-          border: "5px solid white",
-          width: "fit-content",
-          maxWidth: 450,
-          lineHeight: 1,
-          zIndex: "10",
-          marginTop: "1%",
-          paddingLeft: 15,
-          paddingBottom: 10,
-          paddingRight: 15,
-          position: "relative",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-        }}
-      >
-        New Review
-      </Card>
+    const handleSubmit = () => {
+        //dispatch(postReply(values));
+        const id = gobble._id
+        gobble.orders = [...gobble.orders, orderData];
+  
+        console.log("dispatching...", id, gobble);
+        dispatch(updatePost(id, gobble));
+        history.push('/')
+      };
 
-      <Card
+    return (
+        <div>
+            <Card
         sx={{
           backgroundColor: "#04b2d9",
           color: "white",
@@ -87,41 +64,27 @@ export const Review = () => {
           paddingTop: 2,
         }}
       >
-        <CardContent sx={{ paddingTop: 5, fontSize: 25 }}>
+            <CardContent sx={{ paddingTop: 5, fontSize: 25 }}>
           <Box
             component="form"
             sx={{ "& .MuiTextField-root": { marginTop: 5, width: "100%" } }}
             noValidate
             autoComplete="off"
           >
-            <div>
-              <TextField
-                fullWidth
-                id="outlined-multiline-flexible"
-                label="Where did you order from?"
-                multiline
-                rows={1}
-                size="large"
-                value={postData.restaurant}
-                onInput={(e) =>
-                  setPostData({ ...postData, restaurant: e.target.value })
-                }
-              />
-            </div>
+
 
             <center>
-              <Rating
+            <Rating
                 name="rating"
-                value={postData.rating}
+                value={orderData.rating}
                 sx={{ color: "white", fontSize: 50 }}
                 size="large"
                 onChange={(e) =>
-                  setPostData({ ...postData,
-                    orders: {...postData.orders, rating: e.target.value}
-                     })
+                    setOrderData({ ...orderData, rating: e.target.value})
                 }
               />
             </center>
+
             <div>
               <TextField
                 fullWidth
@@ -131,11 +94,9 @@ export const Review = () => {
                 rows={4}
                 sx={{ marginBottom: 2 }}
                 size="large"
-                value={postData.review}
+                value={orderData.review}
                 onInput={(e) =>
-                  setPostData({ ...postData,
-                    orders: {...postData.orders, review: e.target.value}
-                     })
+                    setOrderData({ ...orderData, review: e.target.value})
                 }
               />
             </div>
@@ -157,11 +118,9 @@ export const Review = () => {
                 rows={4}
                 sx={{ marginBottom: 2 }}
                 size="large"
-                value={postData.order}
+                value={orderData.order}
                 onInput={(e) =>
-                  setPostData({ ...postData,
-                    orders: {...postData.orders, order: e.target.value}
-                     })
+                    setOrderData({ ...orderData, order: e.target.value})
                 }
               />
             </div>
@@ -189,7 +148,7 @@ export const Review = () => {
               {mobileQR && (
                 <span onClick={() => setMobileQR(!mobileQR)}>
                   <Scan
-                    importText={(e) => setPostData({ ...postData, order: e })}
+                    importText={(e) => setOrderData({ ...orderData, order: e })}
                   />
                 </span>
               )}
@@ -207,7 +166,7 @@ export const Review = () => {
             Submit
           </Button>
         </CardContent>
-      </Card>
-    </div>
-  );
-};
+            </Card>
+        </div>
+    )
+}

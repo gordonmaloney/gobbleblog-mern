@@ -5,30 +5,11 @@ import { Add } from "@mui/icons-material";
 export const Template = ({ head, body, rating, order }) => {
   return (
     <div style={{width: "80%", marginLeft: "auto", marginRight: "auto"}}>
-      <Card
-        style={{
-          backgroundColor: "#04b2d9",
-          color: "white",
-          fontFamily: "Archivo Black",
-          fontSize: 50,
-          marginLeft: "10%",
-          border: "5px solid white",
-          width: "fit-content",
-          maxWidth: 450,
-          lineHeight: 1,
-          zIndex: "10",
-          marginTop: "1%",
-          paddingLeft: 15,
-          paddingBottom: 10,
-          paddingRight: 15,
-          position: "relative",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-        }}
-      >
+      
+      {head && <Card style={{ backgroundColor: "#04b2d9", color: "white", fontFamily: "Archivo Black", fontSize: 50, marginLeft: "10%", border: "5px solid white", width: "fit-content", maxWidth: 450, lineHeight: 1, zIndex: "10", marginTop: "1%", paddingLeft: 15, paddingBottom: 10, paddingRight: 15, position: "relative", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", }} >
         {head}
       </Card>
+      }
 
       <Grid container alignItems="center" spacing={0}>
         <Grid item md={6} sx={{ zIndex: "8" }}>

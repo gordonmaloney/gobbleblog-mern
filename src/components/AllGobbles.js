@@ -26,15 +26,22 @@ export const AllGobbles = () => {
   
   if (user) filteredPosts = reversedPosts.filter(gobble => gobble.userId == user.result._id)
 
+  
   return (
     <div>
-      {user?.result ? filteredPosts.map((post) => {
+      {user?.result ? filteredPosts.map((gobble) => {
+            let totalRating = 0;
+            gobble.orders.map(order => totalRating = totalRating + order.rating )
+            const avgRating = totalRating / gobble.orders.length
+        
+            console.log(avgRating)
         return (
-          <Link to={`/gobble/${post._id}`}>
+          <Link to={`/gobble/${gobble._id}`}>
+            
             <Template
-              body={post.review}
-              head={post.restaurant}
-              rating={post.rating}
+              body={gobble.summary ? gobble.summary : gobble.orders[0].review}
+              head={gobble.restaurant}
+              rating={avgRating}
             />
           </Link>
         );
