@@ -4,6 +4,8 @@ import { App } from "./OCR";
 import { useDispatch } from "react-redux";
 import { createPost } from "../actions/posts";
 
+import { useHistory } from "react-router";
+
 import { Scan } from "./Scan";
 import { ReviewDict } from "./Dictaphones/reviewDict";
 import { OrderDict } from "./Dictaphones/orderDict";
@@ -13,6 +15,7 @@ import Button from "@mui/material/Button";
 import SendToMobileIcon from "@mui/icons-material/SendToMobile";
 
 export const Review = () => {
+  const history = useHistory();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const [fieldDict, setFieldDict] = useState(null);
   const [uploadBox, setUploadBox] = useState(false);
@@ -34,6 +37,7 @@ export const Review = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createPost(postData));
+    history.push('/')
   };
 
   const dictUpdate = (e) => {

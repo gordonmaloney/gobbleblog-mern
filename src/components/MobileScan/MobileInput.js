@@ -4,7 +4,7 @@ export const MobileInput = ({message, setMessage, sendMessage}) => {
 
 
   useEffect(() => {
-    message && message.length > 13 && sendMessage()
+    message && message.length !== "Still scanning..." && sendMessage()
   }, [message]);
 
   return (

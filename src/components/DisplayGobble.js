@@ -9,6 +9,8 @@ export const DisplayGobble = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+
         dispatch(getPosts());
       }, []);
 
