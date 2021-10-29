@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
-  userId: String,
+  userId: { type: String, required: true },
   restaurant: String,
   summary: String,
   orders: [{
