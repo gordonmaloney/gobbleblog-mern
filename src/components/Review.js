@@ -62,7 +62,7 @@ export const Review = () => {
           width: "fit-content",
           maxWidth: 450,
           lineHeight: 1,
-          zIndex: "10",
+          zIndex: "4",
           marginTop: "1%",
           paddingLeft: 15,
           paddingBottom: 10,

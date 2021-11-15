@@ -19,7 +19,7 @@ export const Menubar = (props) => {
 }, [scroll, location])
 
 
-const cutoffHeight = 1200
+const cutoffHeight = 1100
 
   const [scrollShow, setScrollShow] = useState(true);
 
@@ -49,23 +49,23 @@ const cutoffHeight = 1200
         <AppBar
           position="static"
           sx={{
-            zIndex: 40,
             paddingLeft: "5%",
             borderBottom: "3px solid #0d0d0d",
-            opacity:  window.document.body.offsetHeight > cutoffHeight ? barOpacity : 1,
+            opacity:  window.innerWidth > 900 && window.document.body.offsetHeight > cutoffHeight ? barOpacity : 1,
             backgroundColor: "#04b2d9",
             paddingTop: 0,
             paddingBottom: 0,
             fontSize: 20,
             fontFamily: "Archivo Black",
+            pointerEvents: "auto"
           }}
         >
           <Toolbar>
-            <Link to={"/"}>
-              <h1 style={{ opacity: window.document.body.offsetHeight > cutoffHeight ? barOpacity - 0.3 : 1 }}>Gobbleblog</h1>
+            <Link to={"../"}>
+              <h1 style={{ opacity: window.innerWidth > 900 && window.document.body.offsetHeight > cutoffHeight ? barOpacity - 0.3 : 1 }}>Gobbleblog</h1>
             </Link>
 
-            <Link to={"./review"} style={{marginLeft: "auto"}}>
+            <Link to={"../review"} style={{marginLeft: "auto"}}>
               <Fab
                 sx={{
                   backgroundColor: "#04b2d9",
@@ -83,6 +83,7 @@ const cutoffHeight = 1200
               </Fab>
             </Link>
 
+<br />
             <Login />
             
           </Toolbar>
@@ -94,17 +95,19 @@ const cutoffHeight = 1200
           position: "sticky",
           top: 0,
           color: "white",
-          opacity: window.document.body.offsetHeight > cutoffHeight ? fabOpacity : 0,
-          zIndex: "50",
+          width: "200px",
+          opacity: window.innerWidth > 900 && window.document.body.offsetHeight > cutoffHeight ? fabOpacity : 0,
+          zIndex: "1",
+          pointerEvents:  "auto"
         }}
       >
-        <Link to={"/"}>
+        <Link to={"../"}>
           <Fab
             sx={{
               backgroundColor: "#04b2d9",
               border: "5px solid white",
               color: "white",
-              marginLeft: window.document.body.offsetHeight > cutoffHeight ? `${fabMarg - 100}px` : '-150px',
+              marginLeft: window.innerWidth > 900 && window.document.body.offsetHeight > cutoffHeight ? `${fabMarg - 100}px` : '-150px',
               marginTop: "-10px",
               fontSize: 30,
               marginRight: 5,
@@ -118,13 +121,13 @@ const cutoffHeight = 1200
         </Link>
         <br />
 
-        <Link to={"./review"}>
+        <Link to={"../review"}>
           <Fab
             sx={{
               backgroundColor: "#04b2d9",
               border: "5px solid white",
               color: "white",
-              marginLeft: window.document.body.offsetHeight > cutoffHeight ? `${fabMarg - 100}px` : '-150px',
+              marginLeft: window.innerWidth > 900 && window.document.body.offsetHeight > cutoffHeight ? `${fabMarg - 100}px` : '-150px',
               marginTop: "50px",
               fontSize: 30,
               marginRight: 5,

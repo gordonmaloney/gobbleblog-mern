@@ -49,14 +49,41 @@ export const AddOrder = ({gobble}) => {
 
     return (
         <div>
+
+<Card
+          style={{
+            backgroundColor: "#04b2d9",
+            color: "white",
+            fontFamily: "Archivo Black",
+            fontSize: window.innerWidth > 600 ? 50 : 30,
+            marginLeft: window.innerWidth > 900 ? "16%" : "5%",
+            border: "5px solid white",
+            width: "fit-content",
+            maxWidth: window.innerWidth > 600 ? 450 : 280,
+            paddingTop: window.innerWidth > 600 ? 0 : 5,
+            lineHeight: 1,
+            zIndex: "4",
+            marginTop: "1%",
+            paddingLeft: 15,
+            paddingBottom: 10,
+            paddingRight: 15,
+            position: "relative",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
+          New order
+        </Card>
+
             <Card
         sx={{
           backgroundColor: "#04b2d9",
           color: "white",
           width: "80%",
-          maxWidth: "700px",
+          maxWidth: "500px",
           height: "fit-content",
-          marginLeft: "10%",
+          marginLeft: window.innerWidth > 900 ? "13%" : "0%",
           marginRight: 5,
           marginBottom: 5,
           marginTop: "-40px",

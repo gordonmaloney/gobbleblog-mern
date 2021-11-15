@@ -95,7 +95,8 @@ export const App = ({ changeText }) => {
           </h1>
         )}{" "}
       </div>
-    */}
+      */
+    }
 
     </React.Fragment>
   );
