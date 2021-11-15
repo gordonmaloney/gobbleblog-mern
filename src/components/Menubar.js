@@ -8,6 +8,12 @@ import { useLocation } from "react-router";
 export const Menubar = (props) => {
   const location = useLocation();
   const [scroll, setScroll] = useState(0);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("profile")))
+    console.log(user)
+  }, [location])
 
   window.onscroll = function () {
     setScroll(document.documentElement.scrollTop);
@@ -65,6 +71,8 @@ const cutoffHeight = 1100
               <h1 style={{ opacity: window.innerWidth > 900 && window.document.body.offsetHeight > cutoffHeight ? barOpacity - 0.3 : 1 }}>Gobbleblog</h1>
             </Link>
 
+
+            {user &&
             <Link to={"../review"} style={{marginLeft: "auto"}}>
               <Fab
                 sx={{
@@ -82,10 +90,13 @@ const cutoffHeight = 1100
                 +
               </Fab>
             </Link>
+            }
 
 <br />
+            {user &&
             <Login />
-            
+}
+
           </Toolbar>
         </AppBar>
       </>

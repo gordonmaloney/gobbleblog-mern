@@ -6,7 +6,11 @@ import { useHistory } from "react-router";
 import { Button } from "@mui/material";
 import { signup } from "../actions/auth";
 import { useLocation } from 'react-router-dom'
- 
+
+import { Fab } from "@mui/material";
+
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export const Login = () => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -43,20 +47,31 @@ export const Login = () => {
   };
 
   return (
-    <div>
+    <div >
       { !user ?
             <GoogleLogin
               clientId="1085701539299-476pgbi354gl16jv5lv3mu701g55r0kn.apps.googleusercontent.com"
               render={(renderProps) => (
                 <Button
                   //className={style.googleButton}
-                  color="primary"
-                  fullWidth
                   onClick={renderProps.onClick}
                   disabled={renderProps.disabled}
-                  variant="contained"
                 >
-                  Sign In with Google
+                                <Fab 
+                sx={{
+                  backgroundColor: "#04b2d9",
+                  border: "5px solid white",
+                  color: "white",
+                  marginLeft: "auto",
+                  marginRight: "10%",
+                  fontSize: 30,
+                  marginRight: 5,
+                  fontFamily: "Archivo Black",
+                }}
+                aria-label="add"
+              >
+                  <LoginIcon />
+                  </Fab>
                 </Button>
               )}
               onSuccess={googleSuccess}
@@ -65,7 +80,6 @@ export const Login = () => {
             />
 :
 <>
-Get ready to gobble, {user.result.name}!
       <GoogleLogout
               clientId="1085701539299-476pgbi354gl16jv5lv3mu701g55r0kn.apps.googleusercontent.com"
               buttonText="Logout"
@@ -73,13 +87,24 @@ Get ready to gobble, {user.result.name}!
       render={(renderProps) => (
         <Button
         //className={style.googleButton}
-        color="primary"
-        fullWidth
         onClick={renderProps.onClick}
         disabled={renderProps.disabled}
-        variant="contained"
       >
-        Sign out
+                                        <Fab
+                sx={{
+                  backgroundColor: "#04b2d9",
+                  border: "5px solid white",
+                  color: "white",
+                  marginLeft: "auto",
+                  marginRight: "10%",
+                  fontSize: 30,
+                  marginRight: 5,
+                  fontFamily: "Archivo Black",
+                }}
+                aria-label="add"
+              >
+                  <LogoutIcon />
+                  </Fab>
       </Button>
       )}
     />

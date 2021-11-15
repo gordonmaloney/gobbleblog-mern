@@ -5,6 +5,7 @@ import { Template } from "./Template";
 import { Link } from "react-router-dom";
 import { DisplayGobble } from "./DisplayGobble";
 import { useLocation } from 'react-router-dom'
+import { Login } from "./Login";
 
 export const AllGobbles = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -50,6 +51,7 @@ export const AllGobbles = () => {
       :
       <center>
       <h1 style={{color: "white"}}>Log in to start gobblin'</h1>
+      <Login />
       </center>
     }
     </div>
