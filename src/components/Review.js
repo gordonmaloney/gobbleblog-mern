@@ -14,6 +14,8 @@ import UploadFileIcon from "@mui/icons-material/UploadFile";
 import Button from "@mui/material/Button";
 import SendToMobileIcon from "@mui/icons-material/SendToMobile";
 
+import { Shepherd } from './Shepherd'
+
 export const Review = () => {
   const history = useHistory();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -51,7 +53,11 @@ export const Review = () => {
 
   return (
     <div style={{maxWidth: "700px", marginLeft: "auto", marginRight: "auto"}}>
+      
+      <Shepherd />
+
       <Card
+      id="intro"
         style={{
           backgroundColor: "#04b2d9",
           color: "white",
@@ -115,6 +121,7 @@ export const Review = () => {
 
             <center>
               <Rating
+              id="rating"
                 name="rating"
                 value={postData.rating}
                 sx={{ color: "white", fontSize: 50 }}
@@ -148,7 +155,7 @@ export const Review = () => {
               <ReviewDict changeReview={dictUpdate} />
             ) : (
               <center>
-                <MicIcon onClick={() => setFieldDict("review")} />
+                <MicIcon id="micIcon" onClick={() => setFieldDict("review")} />
               </center>
             )}
 
@@ -174,11 +181,11 @@ export const Review = () => {
               {fieldDict === "order" ? (
                 <OrderDict changeOrder={orderUpdate} />
               ) : (
-                <MicIcon onClick={() => setFieldDict("order")} />
+                <MicIcon id="micIcon2" onClick={() => setFieldDict("order")} />
               )}
 
               
-                <SendToMobileIcon onClick={() => setMobileQR(!mobileQR)} />
+                <SendToMobileIcon id="sendToMobile" onClick={() => setMobileQR(!mobileQR)} />
               
 
               {uploadBox ? (
@@ -192,7 +199,7 @@ export const Review = () => {
 
               {mobileQR && (
                 <span onClick={() => setMobileQR(!mobileQR)}>
-                  <Scan
+                  <Scan id="QR"
                     importText={(e) => setPostData({ ...postData, order: e })}
                   />
                 </span>
@@ -203,6 +210,7 @@ export const Review = () => {
 
           <br />
           <Button
+          id="submitBtn"
             fullWidth
             variant="contained"
             size="large"
