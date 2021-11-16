@@ -14,7 +14,7 @@ import UploadFileIcon from "@mui/icons-material/UploadFile";
 import Button from "@mui/material/Button";
 import SendToMobileIcon from "@mui/icons-material/SendToMobile";
 
-import { Shepherd } from './Shepherd'
+import { Shepherd } from './Shepherd/Shepherd'
 
 export const Review = () => {
   const history = useHistory();
