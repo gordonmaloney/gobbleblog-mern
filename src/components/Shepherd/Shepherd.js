@@ -4,6 +4,7 @@ import './shepherd.css'
 import {STEPS} from './steps'
 import Button from "@mui/material/Button";
 
+import HelpIcon from '@mui/icons-material/Help';
 
 const tourOptions = {
   defaultStepOptions: {
@@ -19,8 +20,8 @@ function TourBtn() {
 
   return (
     <center>
-      <Button variant="contained" className="button dark" onClick={tour.start}>
-        Take a Tour
+      <Button sx={{marginBottom: 0, float: "right"}} className="button dark" size="small" onClick={tour.start}>
+        <HelpIcon />
       </Button>
     </center>
   );

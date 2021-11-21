@@ -58,21 +58,26 @@ export const Review = () => {
 
 
   return (
-    <div style={{maxWidth: "700px", marginLeft: "auto", marginRight: "auto"}}>
-      
-      <Shepherd />
-
+   <div
+      style={{
+        width: "90%",
+        marginLeft: "auto",
+        marginRight: "auto",
+        zIndex: "4",
+      }}
+    >
       <Card
       id="intro"
         style={{
           backgroundColor: "#04b2d9",
           color: "white",
           fontFamily: "Archivo Black",
-          fontSize: 50,
-          marginLeft: "20%",
+          fontSize: window.innerWidth > 600 ? 50 : 25,
+          marginLeft: window.innerWidth > 900 ? "16%" : "5%",
           border: "5px solid white",
           width: "fit-content",
-          maxWidth: 450,
+          maxWidth: window.innerWidth > 600 ? 450 : 240,
+          paddingTop: window.innerWidth > 600 ? 0 : 5,
           lineHeight: 1,
           zIndex: "4",
           marginTop: "1%",
@@ -90,33 +95,39 @@ export const Review = () => {
 
       <Card
         sx={{
-          backgroundColor: "#04b2d9",
-          color: "white",
-          width: "80%",
-          maxWidth: "700px",
-          height: "fit-content",
-          marginLeft: "10%",
-          marginRight: 5,
-          marginBottom: 5,
-          marginTop: "-40px",
-          border: "5px solid white",
-          paddingTop: 2,
+            backgroundColor: "#04b2d9",
+            color: "white",
+            width: "100%",
+            height: "fit-content",
+            marginLeft: window.innerWidth > 900 ? "13%" : "0%",
+            marginRight: 5,
+            marginBottom: 5,
+            marginTop: "-40px",
+            border: "5px solid white",
+            paddingTop: 2,
+            maxWidth: "500px",
+            zIndex: "7",
         }}
       >
-        <CardContent sx={{ paddingTop: 5, fontSize: 25 }}>
+        <CardContent sx={{ paddingTop: "-10", fontSize: 25 }}>
+
+          <div style={{marginTop: "-30px", marginRight: "-30px", marginBottom: "60px"}}>
+        <Shepherd />
+          </div>
+
           <Box
             component="form"
-            sx={{ "& .MuiTextField-root": { marginTop: 5, width: "100%" } }}
+            sx={{ "& .MuiTextField-root": { marginTop: 0, width: "100%" } }}
             noValidate
             autoComplete="off"
           >
+
             <div>
               <TextField
+              sx={{marginTop: 0}} 
                 fullWidth
                 id="outlined-multiline-flexible"
                 label="Where did you order from?"
-                multiline
-                rows={1}
                 size="large"
                 value={postData.restaurant}
                 onInput={(e) =>
@@ -200,7 +211,7 @@ export const Review = () => {
                   <App changeText={orderUpdate} />
                 </>
               ) : (
-                <UploadFileIcon onClick={() => setUploadBox(true)} />
+                <UploadFileIcon id="uploadFile" onClick={() => setUploadBox(true)} />
               )}
 
               {mobileQR && (
