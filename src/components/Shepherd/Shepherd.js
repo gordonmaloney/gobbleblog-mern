@@ -18,9 +18,11 @@ function TourBtn() {
   const tour = useContext(ShepherdTourContext);
 
   return (
-    <Button variant="contained" className="button dark" onClick={tour.start}>
-      Take a Tour
-    </Button>
+    <center>
+      <Button variant="contained" className="button dark" onClick={tour.start}>
+        Take a Tour
+      </Button>
+    </center>
   );
 } 
 

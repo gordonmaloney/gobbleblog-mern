@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Card, Rating, CardContent, Grid, Item, Fab } from "@mui/material";
-import { Add } from "@mui/icons-material";
 
 export const Template = ({ head, body, rating, order }) => {
   return (

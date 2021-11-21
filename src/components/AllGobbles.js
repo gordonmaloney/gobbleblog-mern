@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { getPosts } from "../actions/posts";
 import { Template } from "./Template";
 import { Link } from "react-router-dom";
-import { DisplayGobble } from "./DisplayGobble";
 import { useLocation } from 'react-router-dom'
 import { Login } from "./Login";
 
