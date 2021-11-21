@@ -36,6 +36,8 @@ export const Review = () => {
     userId: user?.result._id
   });
 
+  console.log(postData.orders)
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createPost(postData));
@@ -43,11 +45,15 @@ export const Review = () => {
   };
 
   const dictUpdate = (e) => {
-    setPostData({ ...postData, review: e });
+    setPostData({ ...postData,
+      orders: {...postData.orders, review: e}
+       })
   };
 
   const orderUpdate = (e) => {
-    setPostData({ ...postData, order: e });
+    setPostData({ ...postData,
+      orders: {...postData.orders, order: e}
+       })
   };
 
 
@@ -123,7 +129,7 @@ export const Review = () => {
               <Rating
               id="rating"
                 name="rating"
-                value={postData.rating}
+                value={postData.orders.rating}
                 sx={{ color: "white", fontSize: 50 }}
                 size="large"
                 onChange={(e) =>
@@ -142,7 +148,7 @@ export const Review = () => {
                 rows={4}
                 sx={{ marginBottom: 2 }}
                 size="large"
-                value={postData.review}
+                value={postData.orders.review}
                 onInput={(e) =>
                   setPostData({ ...postData,
                     orders: {...postData.orders, review: e.target.value}
@@ -168,7 +174,7 @@ export const Review = () => {
                 rows={4}
                 sx={{ marginBottom: 2 }}
                 size="large"
-                value={postData.order}
+                value={postData.orders.order}
                 onInput={(e) =>
                   setPostData({ ...postData,
                     orders: {...postData.orders, order: e.target.value}

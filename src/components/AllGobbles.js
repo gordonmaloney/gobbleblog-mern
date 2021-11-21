@@ -36,12 +36,14 @@ export const AllGobbles = () => {
             gobble.orders.map(order => totalRating = totalRating + order.rating )
             const avgRating = totalRating / gobble.orders.length
         
-            console.log(avgRating)
+            console.log(gobble.restaurant, gobble.summary)
+            console.log(gobble.restaurant, gobble.orders[0].review)
+
         return (
           <Link to={`/gobble/${gobble._id}`}>
             
             <Template
-              body={gobble.summary ? gobble.summary : gobble.orders[0].review}
+              body={gobble.summary == undefined ? gobble.orders[0].review : gobble.summary}
               head={gobble.restaurant}
               rating={avgRating}
             />
