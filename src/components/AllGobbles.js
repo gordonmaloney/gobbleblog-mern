@@ -43,7 +43,7 @@ export const AllGobbles = () => {
           <Link to={`/gobble/${gobble._id}`}>
             
             <Template
-              body={gobble.summary == undefined ? gobble.orders[0].review : gobble.summary}
+              body={!gobble.summary ? gobble.orders[0].review : gobble.summary}
               head={gobble.restaurant}
               rating={avgRating}
             />

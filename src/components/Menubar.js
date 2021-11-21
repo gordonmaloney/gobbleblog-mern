@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Review } from "./Review";
 import { Login } from "./Login";
 import { useLocation } from "react-router";
+import AddIcon from '@mui/icons-material/Add';
 
 export const Menubar = (props) => {
   const location = useLocation();
@@ -61,35 +62,40 @@ const cutoffHeight = 1100
             backgroundColor: "#04b2d9",
             paddingTop: 0,
             paddingBottom: 0,
-            fontSize: 20,
+            fontSize: window.innerWidth > 500 ? 20 : 12,
             fontFamily: "Archivo Black",
             pointerEvents: "auto"
           }}
         >
           <Toolbar>
             <Link to={"../"}>
-              <h1 style={{ opacity: window.innerWidth > 900 && window.document.body.offsetHeight > cutoffHeight ? barOpacity - 0.3 : 1 }}>Gobbleblog</h1>
+              <h1 style={{ 
+                opacity: window.innerWidth > 900 && window.document.body.offsetHeight > cutoffHeight ? barOpacity - 0.3 : 1 }}>
+                  Gobbleblog
+                </h1>
             </Link>
 
 
             {user &&
+            <div style={{float: "right", marginLeft: "auto"}}>
             <Link to={"../review"} style={{marginLeft: "auto"}}>
               <Fab
                 sx={{
                   backgroundColor: "#04b2d9",
                   border: "5px solid white",
                   color: "white",
-                  marginLeft: "auto",
+                  marginLeft: window.innerWidth > 500 ? "auto" : 1,
                   marginRight: "10%",
                   fontSize: 30,
-                  marginRight: 5,
+                  marginRight: window.innerWidth > 500 ? 5 : 1,
                   fontFamily: "Archivo Black",
                 }}
                 aria-label="add"
               >
-                +
+                <AddIcon />
               </Fab>
             </Link>
+            </div>
             }
 
 <br />
@@ -109,10 +115,11 @@ const cutoffHeight = 1100
           width: "200px",
           opacity: window.innerWidth > 900 && window.document.body.offsetHeight > cutoffHeight ? fabOpacity : 0,
           zIndex: "1",
-          pointerEvents:  "auto"
+          pointerEvents: "none"
+
         }}
       >
-        <Link to={"../"}>
+        <Link to={"../"} style={{pointerEvents: "auto"}}>
           <Fab
             sx={{
               backgroundColor: "#04b2d9",
@@ -132,7 +139,7 @@ const cutoffHeight = 1100
         </Link>
         <br />
 
-        <Link to={"../review"}>
+        <Link to={"../review"} style={{pointerEvents: "auto"}}>
           <Fab
             sx={{
               backgroundColor: "#04b2d9",

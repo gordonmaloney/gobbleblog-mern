@@ -6,7 +6,7 @@ export const Template = ({ head, body, rating, order }) => {
   return (
     <div
       style={{
-        width: "80%",
+        width: "90%",
         marginLeft: "auto",
         marginRight: "auto",
         zIndex: "4",
@@ -18,11 +18,11 @@ export const Template = ({ head, body, rating, order }) => {
             backgroundColor: "#04b2d9",
             color: "white",
             fontFamily: "Archivo Black",
-            fontSize: window.innerWidth > 600 ? 50 : 30,
+            fontSize: window.innerWidth > 600 ? 50 : 25,
             marginLeft: window.innerWidth > 900 ? "16%" : "5%",
             border: "5px solid white",
             width: "fit-content",
-            maxWidth: window.innerWidth > 600 ? 450 : 280,
+            maxWidth: window.innerWidth > 600 ? 450 : 240,
             paddingTop: window.innerWidth > 600 ? 0 : 5,
             lineHeight: 1,
             zIndex: "4",
@@ -51,7 +51,7 @@ export const Template = ({ head, body, rating, order }) => {
             color: "white",
             width: "100%",
             height: "fit-content",
-            marginLeft: window.innerWidth > 900 ? "13%" : "0%",
+            marginLeft: window.innerWidth > 900 ? "13%" : "-1.5%",
             marginRight: 5,
             marginBottom: 5,
             marginTop: "-40px",

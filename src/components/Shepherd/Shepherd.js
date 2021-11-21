@@ -2,7 +2,8 @@ import React, { Component, useContext } from 'react'
 import { ShepherdTour, ShepherdTourContext } from 'react-shepherd'
 import './shepherd.css'
 import {STEPS} from './steps'
-  
+import Button from "@mui/material/Button";
+
 
 const tourOptions = {
   defaultStepOptions: {
@@ -13,21 +14,21 @@ const tourOptions = {
   useModalOverlay: true
 };
 
-function Button() {
+function TourBtn() {
   const tour = useContext(ShepherdTourContext);
 
   return (
-    <button className="button dark" onClick={tour.start}>
+    <Button variant="contained" className="button dark" onClick={tour.start}>
       Take a Tour
-    </button>
+    </Button>
   );
-}
+} 
 
 export const Shepherd = () => {
     return (
       <div>
         <ShepherdTour steps={STEPS} tourOptions={tourOptions}>
-          <Button />
+          <TourBtn />
         </ShepherdTour>
       </div>
     );
