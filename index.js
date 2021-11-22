@@ -26,16 +26,16 @@ const io = new Server(server , {
   })
 
   io.on('connection', (socket) => {
-    console.log('We have a new connection!!');
+    console.log('new connection');
     
     socket.on('join', ({name, room}, callback) => {
       const { error, user } = addUser({id: socket.id, name, room});
 
       if (error) return callback(error)
 
-      socket.emit('message', {user: 'admin', text: `${user.name} welcome to the room ${user.room}`})
+      socket.emit('message', {user: 'server', text: `${user.name} connected to ${user.room}`})
 
-      socket.broadcast.to(user.room).emit('message', {user: 'admin', text: `${user.name} has joined the room ${user.room}`})
+      socket.broadcast.to(user.room).emit('message', {user: 'server', text: `${user.name} has connected to ${user.room}`})
 
       socket.join(user.room);
 
@@ -54,11 +54,11 @@ const io = new Server(server , {
     })
 
     socket.on('disconnection', () => {
-        console.log("user has disconnected")
+        console.log(`user has disconnected`)
         const user = removeUser(socket.id);
 
         if (user) {
-          io.to(user.room).emit('message', {user: "admin", text: `${user.name} has left the room`})
+          io.to(user.room).emit('message', {user: "server", text: `${user.name} has disconnected`})
         }
     })
 })
