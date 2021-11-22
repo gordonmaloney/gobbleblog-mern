@@ -52,11 +52,11 @@ export const Template = ({ head, body, rating, order }) => {
             height: "fit-content",
             marginLeft: window.innerWidth > 900 ? "13%" : "-1.5%",
             marginRight: 5,
-            marginBottom: 5,
+            marginBottom: window.innerWidth > 900 ? 10 : 5,
             marginTop: "-40px",
             border: "5px solid white",
             paddingTop: 2,
-            maxWidth: "500px",
+            maxWidth: "800px",
             zIndex: "7",
           }}
         >

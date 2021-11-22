@@ -70,16 +70,9 @@ export const MobileScreen = ({location}) => {
 
     return (
         <div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
             <App setMessage={setMessage} />
             <MobileInput message={message} setMessage={setMessage} sendMessage={sendMessage}/>
             
-
 
         </div>
     )

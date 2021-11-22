@@ -47,7 +47,7 @@ export const DisplayGobble = (props) => {
 
       return (
         <div>
-          <span onClick={() => setChangeSummary(true)}>
+          <span style={{ fontSize: "small" }} onClick={() => setChangeSummary(true)}>
             Tap to give this place a top-line summary
           </span>
 

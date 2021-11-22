@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import QRCode from 'qrcode.react';
 import io from "socket.io-client";
 import queryString from 'query-string';
+import { useLocation } from "react-router";
 
 let socket;
 
@@ -15,18 +16,26 @@ export const ScanSocket = ({location, importText}) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+
+    useEffect(() => {
+      setUser(JSON.parse(localStorage.getItem("profile")))
+      console.log(user.result._id)
+    }, [location])
+
     const ENDPOINT = 'https://gobbleblog.herokuapp.com/';
     //const ENDPOINT = 'http://localhost:5000'
 
     useEffect(() => {
-        const name = "name"
-        const room = "room" 
+        setName(user?.result._id)
+        setRoom(user?.result._id)
         
         socket = io(ENDPOINT);
    
-        setName(name);
-        setRoom(room)
    
+        console.log("scansocket", name)
+
+
         socket.emit('join', { name, room }, (error) => {
          });
    
@@ -35,7 +44,8 @@ export const ScanSocket = ({location, importText}) => {
              
              socket.off();
          }
-       }, [ENDPOINT, location])
+
+       }, [ENDPOINT, location, user])
    
    
        useEffect(() => {
@@ -46,7 +56,7 @@ export const ScanSocket = ({location, importText}) => {
            socket.on("roomData", ({ users }) => {
              setUsers(users);
            });
-       }, []);
+       }, [user]);
    
        const sendMessage = (event) => {
            event.preventDefault();
@@ -55,19 +65,21 @@ export const ScanSocket = ({location, importText}) => {
                socket.emit('sendMessage', message, () => setMessage(''))
            }
        }
-       console.log(messages)
+
+       console.log("messages", messages)
 
     useEffect(() => {
-        console.log("test")
        messages.map(newmessage => newmessage.user === "mobileclient" && //setMobileScan(newmessage.text))
                                                                         importText(newmessage.text))
-    }, [messages])
+
+
+    }, [messages, user])
 
 
 
     return (
         <div>
-            <QRCode includeMargin="true" value={`https://gobbleblog.netlify.app/mobilescreen?name=mobileclient&room=room`} />
+            <QRCode includeMargin="true" value={`https://gobbleblog.netlify.app/mobilescreen?name=mobileclient&room=${room}`} />
 
 
             {//<App setMessage={setMessage} />

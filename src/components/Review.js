@@ -217,7 +217,9 @@ export const Review = () => {
               {mobileQR && (
                 <span onClick={() => setMobileQR(!mobileQR)}>
                   <Scan id="QR"
-                    importText={(e) => setPostData({ ...postData, order: e })}
+                    importText={(e) => setPostData({ ...postData,
+                      orders: {...postData.orders, order: e}
+                       })}
                   />
                 </span>
               )}

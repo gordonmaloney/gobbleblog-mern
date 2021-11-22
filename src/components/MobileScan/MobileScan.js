@@ -8,7 +8,7 @@ import { App } from "./MobileOcr";
 let socket;
 
 export const MobileScan = ({location}) => {
-
+/*
     const [mobileScan, setMobileScan] = useState('');
 
     const [name, setName] = useState('');
@@ -68,9 +68,10 @@ export const MobileScan = ({location}) => {
             <QRCode includeMargin="true" value={`https://gobbleblog.netlify.app/mobilescreen?name=mobileclient&room=room`} />
 
             <MobileInput message={message} setMessage={setMessage} sendMessage={sendMessage}/>
-
+TEST TEST TEST
 <h1 style={{color: "white"}}>Text from mobile: {mobileScan}</h1>
             <App setMessage={setMessage} />
         </div>
     )
+    */
 }

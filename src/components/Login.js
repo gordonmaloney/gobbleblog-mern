@@ -63,9 +63,8 @@ export const Login = () => {
                   border: "5px solid white",
                   color: "white",
                   marginLeft: "auto",
-                  marginRight: "10%",
+                  marginRight: "auto",
                   fontSize: 30,
-                  marginRight: 5,
                   fontFamily: "Archivo Black",
                 }}
                 aria-label="add"
