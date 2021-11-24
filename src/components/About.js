@@ -11,7 +11,7 @@ export const About = () => {
             <h3><u>What's this all about?</u></h3>
             </span>
 
-            {open && <div style={{textAlign: "left", width: "40%", minWidth: "400px"}}>
+            {open && <div style={{textAlign: "left", width: "80%", maxWidth: "500px"}}>
             Gobbleblog is the answer to never getting a bad takeaway twice.
             <br /><br />
             Just log-in using your Google account, and get gobblin'.
