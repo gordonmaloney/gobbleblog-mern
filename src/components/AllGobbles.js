@@ -5,6 +5,8 @@ import { Template } from "./Template";
 import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
 import { Login } from "./Login";
+import { About } from "./About";
+
 
 export const AllGobbles = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -53,6 +55,8 @@ export const AllGobbles = () => {
       <center>
       <h1 style={{color: "white"}}>Log in to start gobblin'</h1>
       <Login />
+<br /><br />
+      <About />
       </center>
     }
     </div>
