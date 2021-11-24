@@ -50,6 +50,7 @@ const cutoffHeight = 1100
     fabMarg2 > 100 || (scroll > 700 && setFabMarg2(100));
   }, [scroll]);
 
+
   return (
     <div>
       <>
@@ -64,12 +65,12 @@ const cutoffHeight = 1100
             paddingBottom: 0,
             fontSize: window.innerWidth > 500 ? 20 : 12,
             fontFamily: "Archivo Black",
-            pointerEvents: "auto"
           }}
         >
           <Toolbar>
             <Link to={"../"}>
-              <h1 style={{ 
+              <h1 style={{  
+            pointerEvents:  window.innerWidth < 900 ? "auto" : barOpacity > 0.1 ? "auto" : "none" ,
                 opacity: window.innerWidth > 900 && window.document.body.offsetHeight > cutoffHeight ? barOpacity - 0.3 : 1 }}>
                   Gobbleblog
                 </h1>
@@ -81,6 +82,7 @@ const cutoffHeight = 1100
             <Link to={"../review"} style={{marginLeft: "auto"}}>
               <Fab
                 sx={{
+                  pointerEvents:  window.innerWidth < 900 ? "auto" : barOpacity > 0.1 ? "auto" : "none" ,
                   backgroundColor: "#04b2d9",
                   border: "5px solid white",
                   color: "white",
@@ -100,7 +102,9 @@ const cutoffHeight = 1100
 
 <br />
             {user &&
+            <div style={{pointerEvents:  window.innerWidth < 900 ? "auto" : barOpacity > 0.1 ? "auto" : "none"}}>
             <Login />
+            </div>
 }
 
           </Toolbar>
@@ -119,8 +123,9 @@ const cutoffHeight = 1100
 
         }}
       >
-        <Link to={"../"} style={{pointerEvents: "auto"}}>
+        <Link to={"../"} >
           <Fab
+          style={{pointerEvents: "auto"}}
             sx={{
               backgroundColor: "#04b2d9",
               border: "5px solid white",
@@ -139,8 +144,9 @@ const cutoffHeight = 1100
         </Link>
         <br />
 
-        <Link to={"../review"} style={{pointerEvents: "auto"}}>
+        <Link to={"../review"} >
           <Fab
+          style={{pointerEvents: "auto"}}
             sx={{
               backgroundColor: "#04b2d9",
               border: "5px solid white",

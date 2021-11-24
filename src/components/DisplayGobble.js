@@ -6,11 +6,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { updatePost } from "../actions/posts";
 import { TextField, Button } from "@mui/material";
 import { Card, CardContent, Rating } from "@mui/material";
-
+import { deletePost } from "../actions/posts";
+import { useHistory } from "react-router";
 import { Link, animateScroll as scroll } from "react-scroll";
 
 export const DisplayGobble = (props) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,7 +26,12 @@ export const DisplayGobble = (props) => {
     (gobbles) => gobbles._id === props.match.params.id
   )[0];
 
-  console.log("gobbles, ", gobbles);
+  const handleDelete = (id) => {
+    dispatch(deletePost(id));
+    history.push('../')
+  };
+
+  
 
   if (gobbles.length > 0) {
     let totalRating = 0;
@@ -47,8 +54,12 @@ export const DisplayGobble = (props) => {
 
       return (
         <div>
-          <span style={{ fontSize: "small" }} onClick={() => setChangeSummary(true)}>
-            Tap to give this place a top-line summary
+          <span onClick={() => setChangeSummary(true)}>
+          {gobble.orders[0].review}
+          <br/>
+          {!changeSummary && (
+              <span style={{ fontSize: "small" }}>(tap to edit summary)</span>
+            )}
           </span>
 
           {changeSummary && (
@@ -215,27 +226,20 @@ export const DisplayGobble = (props) => {
             size="small">Add a new order for this restaurant</Button>
         </Link>
 
+        <button onClick={() => handleDelete(gobble._id)}>Delete</button>
         </center>
         </CardContent>
         </Card>
         </div>
 
+
+
         <Orders orders={gobble.orders} />
 
-        {/*
-            {gobble.orders.map(order => 
-                <Template
-                    body={order.review}
-                    rating={order.rating}
-                    order={order.order}
-                />
-                
-                )}
-                */}
 
         <div
           style={{
-            width: "80%",
+            width: "70%",
             marginLeft: "auto",
             marginRight: "auto",
             zIndex: "8",

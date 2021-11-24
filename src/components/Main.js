@@ -40,13 +40,14 @@ export const Main = () => {
           <Menubar />
         </div>
 
+
         <Switch>
+
           <Route exact path="/">
             <AllGobbles />
           </Route>
 
           <Route path="/review" component={Review} />
-         {/* <Route path="/ocr" component={App} /> */}
 
           <Route path="/gobble/:id" component={DisplayGobble} />
 
@@ -54,6 +55,8 @@ export const Main = () => {
           <Route path="/mobilescreen" component={MobileScreen} />
 
         </Switch>
+
+
       </BrowserRouter>
     </div>
   );

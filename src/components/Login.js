@@ -53,12 +53,12 @@ export const Login = () => {
               clientId="1085701539299-476pgbi354gl16jv5lv3mu701g55r0kn.apps.googleusercontent.com"
               render={(renderProps) => (
                 <Button
-                  //className={style.googleButton}
                   onClick={renderProps.onClick}
                   disabled={renderProps.disabled}
                 >
                                 <Fab 
-                sx={{
+                                style={{pointerEvents: "auto"}}
+                sx={{                  
                   backgroundColor: "#04b2d9",
                   border: "5px solid white",
                   color: "white",
@@ -89,7 +89,7 @@ export const Login = () => {
         onClick={renderProps.onClick}
         disabled={renderProps.disabled}
       >
-                                        <Fab
+                <Fab
                 sx={{
                   backgroundColor: "#04b2d9",
                   border: "5px solid white",

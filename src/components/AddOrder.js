@@ -13,6 +13,8 @@ import Button from "@mui/material/Button";
 import SendToMobileIcon from "@mui/icons-material/SendToMobile";
 import { useHistory } from "react-router";
 
+import { Shepherd } from './Shepherd/Shepherd'
+
 
 export const AddOrder = ({gobble}) => {
     const history = useHistory();
@@ -80,8 +82,7 @@ export const AddOrder = ({gobble}) => {
         sx={{
           backgroundColor: "#04b2d9",
           color: "white",
-          width: "80%",
-          maxWidth: "500px",
+          width: "100%",
           height: "fit-content",
           marginLeft: window.innerWidth > 900 ? "13%" : "0%",
           marginRight: 5,
@@ -89,9 +90,16 @@ export const AddOrder = ({gobble}) => {
           marginTop: "-40px",
           border: "5px solid white",
           paddingTop: 2,
+          maxWidth: "800px",
+          zIndex: "7",
         }}
       >
-            <CardContent sx={{ paddingTop: 5, fontSize: 25 }}>
+        <CardContent sx={{ paddingTop: "-10", fontSize: 25 }}>
+
+            <div style={{marginTop: "-30px", marginRight: "-30px", marginBottom: "60px"}}>
+        <Shepherd />
+          </div>
+
           <Box
             component="form"
             sx={{ "& .MuiTextField-root": { marginTop: 5, width: "100%" } }}
@@ -102,6 +110,7 @@ export const AddOrder = ({gobble}) => {
 
             <center>
             <Rating
+                id="rating"
                 name="rating"
                 value={orderData.rating}
                 sx={{ color: "white", fontSize: 50 }}
@@ -132,7 +141,7 @@ export const AddOrder = ({gobble}) => {
               <ReviewDict changeReview={dictUpdate} />
             ) : (
               <center>
-                <MicIcon onClick={() => setFieldDict("review")} />
+                <MicIcon id="micIcon" onClick={() => setFieldDict("review")} />
               </center>
             )}
 
@@ -156,11 +165,11 @@ export const AddOrder = ({gobble}) => {
               {fieldDict === "order" ? (
                 <OrderDict changeOrder={orderUpdate} />
               ) : (
-                <MicIcon onClick={() => setFieldDict("order")} />
+                <MicIcon id="micIcon2" onClick={() => setFieldDict("order")} />
               )}
 
               
-                <SendToMobileIcon onClick={() => setMobileQR(!mobileQR)} />
+                <SendToMobileIcon id="sendToMobile" onClick={() => setMobileQR(!mobileQR)} />
               
 
               {uploadBox ? (
@@ -169,12 +178,12 @@ export const AddOrder = ({gobble}) => {
                   <App changeText={orderUpdate} />
                 </>
               ) : (
-                <UploadFileIcon onClick={() => setUploadBox(true)} />
+                <UploadFileIcon  id="uploadFile" onClick={() => setUploadBox(true)} />
               )}
 
               {mobileQR && (
                 <span onClick={() => setMobileQR(!mobileQR)}>
-                  <Scan
+                  <Scan id="QR"
                     importText={(e) => setOrderData({ ...orderData, order: e })}
                   />
                 </span>
@@ -185,6 +194,7 @@ export const AddOrder = ({gobble}) => {
 
           <br />
           <Button
+          id="submitBtn"
             fullWidth
             variant="contained"
             size="large"

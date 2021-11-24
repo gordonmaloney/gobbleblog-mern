@@ -3,7 +3,7 @@ export const STEPS = [
       id: 'intro',
       attachTo: { element: '#rating', on: 'bottom' },
       beforeShowPromise: function () { return new Promise(function (resolve) { setTimeout(function () { window.scrollTo(0, 0); resolve(); }, 500); }); },
-      buttons: [ { classes: 'shepherd-button-secondary', text: 'Exit', type: 'cancel' }, { classes: 'shepherd-button-primary', text: 'Back', type: 'back' }, { classes: 'shepherd-button-primary', text: 'Next', type: 'next' } ], classes: 'custom-class-name-1 custom-class-name-2', highlightClass: 'highlight', scrollTo: false, cancelIcon: { enabled: true, },
+      buttons: [ { classes: 'shepherd-button-secondary', text: 'Exit', type: 'cancel' }, { classes: 'shepherd-button-primary', text: 'Back', type: 'back' }, { classes: 'shepherd-button-primary', text: 'Next', type: 'next' } ], classes: 'custom-class-name-1 custom-class-name-2', highlightClass: 'highlight', scrollTo: true, cancelIcon: { enabled: true, },
       title: 'Welcome to Gobbleblog!!',
       text: ['Give your meal a rating out of 5 stars here.'],
       when: { show: () => { console.log('show step'); }, hide: () => { console.log('hide step'); } }
