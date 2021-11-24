@@ -300,7 +300,7 @@ Delete Gobble Modal
 
         <div
           style={{
-            width: "70%",
+            width: "80%",
             marginLeft: "auto",
             marginRight: "auto",
             zIndex: "8",

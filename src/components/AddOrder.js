@@ -13,72 +13,70 @@ import Button from "@mui/material/Button";
 import SendToMobileIcon from "@mui/icons-material/SendToMobile";
 import { useHistory } from "react-router";
 
-import { Shepherd } from './Shepherd/Shepherd'
+import { Shepherd } from "./Shepherd/Shepherd";
 
+export const AddOrder = ({ gobble }) => {
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-export const AddOrder = ({gobble}) => {
-    const history = useHistory();
-    const dispatch = useDispatch();
+  const [fieldDict, setFieldDict] = useState(null);
+  const [uploadBox, setUploadBox] = useState(false);
+  const [mobileQR, setMobileQR] = useState(false);
 
-    const [fieldDict, setFieldDict] = useState(null);
-    const [uploadBox, setUploadBox] = useState(false);
-    const [mobileQR, setMobileQR] = useState(false);
+  const [orderData, setOrderData] = useState({
+    order: "",
+    review: "",
+    rating: 0,
+    date: new Date(),
+  });
 
-    const [orderData, setOrderData] = useState({
-        order: "",
-        review: "",
-        rating: 0,
-        date: new Date()
-      });
+  const orderUpdate = (e) => {
+    setOrderData({ ...orderData, order: e });
+  };
 
-      const orderUpdate = (e) => {
-        setOrderData({ ...orderData, order: e });
-      };
+  const dictUpdate = (e) => {
+    setOrderData({ ...orderData, review: e });
+  };
 
-      const dictUpdate = (e) => {
-        setOrderData({ ...orderData, review: e });
-      };
+  const handleSubmit = () => {
+    //dispatch(postReply(values));
+    const id = gobble._id;
+    gobble.orders = [...gobble.orders, orderData];
 
-    const handleSubmit = () => {
-        //dispatch(postReply(values));
-        const id = gobble._id
-        gobble.orders = [...gobble.orders, orderData];
-  
-        console.log("dispatching...", id, gobble);
-        dispatch(updatePost(id, gobble));
-        history.push('/')
-      };
+    console.log("dispatching...", id, gobble);
+    dispatch(updatePost(id, gobble));
+    history.push("/");
+  };
 
-    return (
-        <div>
+  return (
+    <div>
+      <Card
+        style={{
+          backgroundColor: "#04b2d9",
+          color: "white",
+          fontFamily: "Archivo Black",
+          fontSize: window.innerWidth > 600 ? 50 : 30,
+          marginLeft: window.innerWidth > 900 ? "16%" : "5%",
+          border: "5px solid white",
+          width: "fit-content",
+          maxWidth: window.innerWidth > 600 ? 450 : 280,
+          paddingTop: window.innerWidth > 600 ? 0 : 5,
+          lineHeight: 1,
+          zIndex: "4",
+          marginTop: "1%",
+          paddingLeft: 15,
+          paddingBottom: 10,
+          paddingRight: 15,
+          position: "relative",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+        }}
+      >
+        New order
+      </Card>
 
-<Card
-          style={{
-            backgroundColor: "#04b2d9",
-            color: "white",
-            fontFamily: "Archivo Black",
-            fontSize: window.innerWidth > 600 ? 50 : 30,
-            marginLeft: window.innerWidth > 900 ? "16%" : "5%",
-            border: "5px solid white",
-            width: "fit-content",
-            maxWidth: window.innerWidth > 600 ? 450 : 280,
-            paddingTop: window.innerWidth > 600 ? 0 : 5,
-            lineHeight: 1,
-            zIndex: "4",
-            marginTop: "1%",
-            paddingLeft: 15,
-            paddingBottom: 10,
-            paddingRight: 15,
-            position: "relative",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-          }}
-        >
-          New order
-        </Card>
-
-            <Card
+      <Card
         sx={{
           backgroundColor: "#04b2d9",
           color: "white",
@@ -90,14 +88,19 @@ export const AddOrder = ({gobble}) => {
           marginTop: "-40px",
           border: "5px solid white",
           paddingTop: 2,
-          maxWidth: "800px",
+          maxWidth: "900px",
           zIndex: "7",
         }}
       >
         <CardContent sx={{ paddingTop: "-10", fontSize: 25 }}>
-
-            <div style={{marginTop: "-30px", marginRight: "-30px", marginBottom: "60px"}}>
-        <Shepherd />
+          <div
+            style={{
+              marginTop: "-30px",
+              marginRight: "-30px",
+              marginBottom: "60px",
+            }}
+          >
+            <Shepherd />
           </div>
 
           <Box
@@ -106,17 +109,15 @@ export const AddOrder = ({gobble}) => {
             noValidate
             autoComplete="off"
           >
-
-
             <center>
-            <Rating
+              <Rating
                 id="rating"
                 name="rating"
                 value={orderData.rating}
                 sx={{ color: "white", fontSize: 50 }}
                 size="large"
                 onChange={(e) =>
-                    setOrderData({ ...orderData, rating: e.target.value})
+                  setOrderData({ ...orderData, rating: e.target.value })
                 }
               />
             </center>
@@ -132,7 +133,7 @@ export const AddOrder = ({gobble}) => {
                 size="large"
                 value={orderData.review}
                 onInput={(e) =>
-                    setOrderData({ ...orderData, review: e.target.value})
+                  setOrderData({ ...orderData, review: e.target.value })
                 }
               />
             </div>
@@ -156,7 +157,7 @@ export const AddOrder = ({gobble}) => {
                 size="large"
                 value={orderData.order}
                 onInput={(e) =>
-                    setOrderData({ ...orderData, order: e.target.value})
+                  setOrderData({ ...orderData, order: e.target.value })
                 }
               />
             </div>
@@ -168,9 +169,10 @@ export const AddOrder = ({gobble}) => {
                 <MicIcon id="micIcon2" onClick={() => setFieldDict("order")} />
               )}
 
-              
-                <SendToMobileIcon id="sendToMobile" onClick={() => setMobileQR(!mobileQR)} />
-              
+              <SendToMobileIcon
+                id="sendToMobile"
+                onClick={() => setMobileQR(!mobileQR)}
+              />
 
               {uploadBox ? (
                 <>
@@ -178,12 +180,16 @@ export const AddOrder = ({gobble}) => {
                   <App changeText={orderUpdate} />
                 </>
               ) : (
-                <UploadFileIcon  id="uploadFile" onClick={() => setUploadBox(true)} />
+                <UploadFileIcon
+                  id="uploadFile"
+                  onClick={() => setUploadBox(true)}
+                />
               )}
 
               {mobileQR && (
                 <span onClick={() => setMobileQR(!mobileQR)}>
-                  <Scan id="QR"
+                  <Scan
+                    id="QR"
                     importText={(e) => setOrderData({ ...orderData, order: e })}
                   />
                 </span>
@@ -191,10 +197,9 @@ export const AddOrder = ({gobble}) => {
             </center>
           </Box>
 
-
           <br />
           <Button
-          id="submitBtn"
+            id="submitBtn"
             fullWidth
             variant="contained"
             size="large"
@@ -203,7 +208,7 @@ export const AddOrder = ({gobble}) => {
             Submit
           </Button>
         </CardContent>
-            </Card>
-        </div>
-    )
-}
+      </Card>
+    </div>
+  );
+};
