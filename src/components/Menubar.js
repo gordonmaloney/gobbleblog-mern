@@ -5,6 +5,7 @@ import { Review } from "./Review";
 import { Login } from "./Login";
 import { useLocation } from "react-router";
 import AddIcon from '@mui/icons-material/Add';
+import logo from './logo.png'
 
 export const Menubar = (props) => {
   const location = useLocation();
@@ -72,7 +73,27 @@ const cutoffHeight = 1100
               <h1 style={{  
             pointerEvents:  window.innerWidth < 900 ? "auto" : barOpacity > 0.1 ? "auto" : "none" ,
                 opacity: window.innerWidth > 900 && window.document.body.offsetHeight > cutoffHeight ? barOpacity - 0.3 : 1 }}>
-                  Gobbleblog
+        
+
+        <Fab
+                sx={{
+                  pointerEvents:  window.innerWidth < 900 ? "auto" : barOpacity > 0.1 ? "auto" : "none" ,
+                  backgroundColor: "#04b2d9",
+                  border: "5px solid white",
+                  color: "white",
+                  marginLeft: window.innerWidth > 500 ? "auto" : 1,
+                  marginRight: "10%",
+                  fontSize: 30,
+                  marginRight: window.innerWidth > 500 ? 5 : 1,
+                  fontFamily: "Archivo Black",
+                }}
+                aria-label="add"
+              >
+            <img src={logo} style={{height: "60px"}} />
+</Fab>
+
+{" "}<span style={{display: window.innerWidth < 700 ? "none" : "inline"}}>Gobbleblog</span>
+
                 </h1>
             </Link>
 
@@ -139,7 +160,7 @@ const cutoffHeight = 1100
             }}
             aria-label="add"
           >
-            G
+            <img src={logo} style={{height: "50px"}} />
           </Fab>
         </Link>
         <br />
