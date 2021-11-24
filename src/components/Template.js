@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Rating, CardContent, Grid, Item, Fab } from "@mui/material";
+import { Card, Rating, CardContent, Grid, Item, Fab, Tooltip} from "@mui/material";
 
 export const Template = ({ head, body, rating, order }) => {
   return (
@@ -21,7 +21,7 @@ export const Template = ({ head, body, rating, order }) => {
             marginLeft: window.innerWidth > 900 ? "16%" : "5%",
             border: "5px solid white",
             width: "fit-content",
-            maxWidth: window.innerWidth > 600 ? 450 : 240,
+            maxWidth: window.innerWidth > 600 ? "80%" : "70%",
             paddingTop: window.innerWidth > 600 ? 0 : 5,
             lineHeight: 1,
             zIndex: "4",
@@ -35,7 +35,9 @@ export const Template = ({ head, body, rating, order }) => {
             whiteSpace: "nowrap",
           }}
         >
-          {head}
+                        <Tooltip title={<div style={{fontSize: 20}}>{head}</div>}>
+                <span>{head}</span>
+              </Tooltip>
         </Card>
       )}
 
