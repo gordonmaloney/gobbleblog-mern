@@ -6,6 +6,7 @@ import { useHistory } from "react-router";
 import { Button } from "@mui/material";
 import { signup } from "../actions/auth";
 import { useLocation } from 'react-router-dom'
+import Tooltip from "@mui/material/Tooltip";
 
 import { Fab } from "@mui/material";
 
@@ -89,6 +90,8 @@ export const Login = () => {
         onClick={renderProps.onClick}
         disabled={renderProps.disabled}
       >
+                        <Tooltip arrow title="Log out">
+
                 <Fab
                 sx={{
                   backgroundColor: "#04b2d9",
@@ -104,6 +107,7 @@ export const Login = () => {
               >
                   <LogoutIcon />
                   </Fab>
+                  </Tooltip>
       </Button>
       )}
     />
