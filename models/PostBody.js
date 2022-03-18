@@ -1,18 +1,12 @@
 import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
-  userId: { type: String, required: true },
-  restaurant: String,
-  summary: String,
-  orders: [{
-    review: String,
-    rating: Number,
-    order: String,
-    date: String
-  }]
-},{ timestamps: true }
-);
+  lesson: String,
+  author: String,
+  title: String,
+  body: String,
+});
 
-const gobble = mongoose.model("gobble", postSchema);
+const PostBody = mongoose.model("PostBody", postSchema);
 
-export default gobble;
+export default PostBody;

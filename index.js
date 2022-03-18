@@ -9,8 +9,6 @@ import { Server, Socket } from "socket.io";
 import postRoutes from './routes/posts.js'
 import userRoutes from './routes/users.js';
 
-import { addUser, removeUser, getUser, getUsersInRoom } from './socketUsers.js'
-
 const router = express.Router();
 
 dotenv.config();
@@ -76,10 +74,8 @@ app.get('/', (req, res) => {
 })
 
 const PORT = process.env.PORT
-const CONNECTION_URL = "mongodb+srv://gordon:gordon123@cluster0.a8rai.mongodb.net/Gobbles?retryWrites=true&w=majority"
+const CONNECTION_URL = "mongodb+srv://gordon:gordon123@cluster0.a8rai.mongodb.net/Comhradh?retryWrites=true&w=majority"
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => server.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
     .catch((error) => console.log(error.message));  
-
-//server.listen(5001, () => console.log(`Socket Server has started on port 5001`));
