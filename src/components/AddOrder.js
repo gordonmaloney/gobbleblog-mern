@@ -128,7 +128,7 @@ export const AddOrder = ({ gobble }) => {
                 id="outlined-multiline-flexible"
                 label="How was it?"
                 multiline
-                rows={4}
+                rows={2}
                 sx={{ marginBottom: 2 }}
                 size="large"
                 value={orderData.review}
@@ -152,7 +152,7 @@ export const AddOrder = ({ gobble }) => {
                 id="outlined-multiline-flexible"
                 label="What did you get?"
                 multiline
-                rows={4}
+                rows={2}
                 sx={{ marginBottom: 2 }}
                 size="large"
                 value={orderData.order}

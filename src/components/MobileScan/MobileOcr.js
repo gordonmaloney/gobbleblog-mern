@@ -65,47 +65,43 @@ export const App = ({ setMessage }) => {
       <div
         style={{
           marginTop: "85px",
-          height: "80vh",
+          height: "60vh",
 
-          overflow: "hidden",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-
-        <Dropzone
-          style={{ width: "80%", overflow: "hidden" }}
-          getUploadParams={getUploadParams}
-          onChangeStatus={handleChangeStatus}
-          maxFiles={1}
-          multiple={false}
-          canCancel={false}
-          accept="image/jpeg, image/png, image/jpg"
-          inputContent={(files, extra) =>
-            extra.reject
-              ? "Only PNG and JPG Image files are allowed"
-              : "Drag your receipt here or click to browse"
-          }
-          styles={{
-            dropzoneActive: {
-              borderColor: "green",
-            },
-            dropzoneReject: { borderColor: "red", backgroundColor: "#DAA" },
-            inputLabel: (files, extra) =>
-              extra.reject ? { color: "red" } : {},
-          }}
-        />
+        <div style={{ width: "80%", maxWidth: "500px" }}>
+          <Dropzone
+            style={{ overflow: "hidden" }}
+            getUploadParams={getUploadParams}
+            onChangeStatus={handleChangeStatus}
+            maxFiles={1}
+            multiple={false}
+            canCancel={false}
+            accept="image/jpeg, image/png, image/jpg"
+            inputContent={(files, extra) =>
+              extra.reject
+                ? "Only PNG and JPG Image files are allowed"
+                : "Drag your receipt here or click to browse"
+            }
+            styles={{
+              dropzoneActive: {
+                borderColor: "green",
+              },
+              dropzoneReject: { borderColor: "red", backgroundColor: "#DAA" },
+              inputLabel: (files, extra) =>
+                extra.reject ? { color: "red" } : {},
+            }}
+          />
+        </div>
       </div>
 
-
       <center>
-        <h2 style={{ color: "white" }}>{successMsg && successMsg}</h2>
-
-        <img src={logo} style={{ height: "80px" }} />
+        <h4 style={{ color: "white" }}>{successMsg && successMsg}</h4>
+        <img src={logo} style={{ height: "80px", display: "block" }} />
       </center>
-
-
 
       {/*
       <div style={{ color: "white" }}>

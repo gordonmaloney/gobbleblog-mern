@@ -57,18 +57,19 @@ export const Template = ({ head, body, rating, order }) => {
             marginBottom: window.innerWidth > 900 ? 10 : 5,
             marginTop: "-40px",
             border: "5px solid white",
-            paddingTop: 2,
+            paddingTop: 1,
+            paddingBottom: "-40px",
             maxWidth: "800px",
             zIndex: "7",
           }}
         >
-          <CardContent sx={{ paddingTop: 5, fontSize: 25, zIndex: "6" }}>
+          <CardContent sx={{ paddingTop: 5, fontSize: 20, zIndex: "6" }}>
             <center>
               <Rating
                 name="read-only"
                 value={rating}
                 readOnly
-                sx={{ color: "white", fontSize: 50 }}
+                sx={{ color: "white", fontSize: 40, marginBottom: "10px" }}
                 size="large"
               />
             </center>
@@ -81,66 +82,9 @@ export const Template = ({ head, body, rating, order }) => {
 
             {order && <hr />}
           </CardContent>
-          <CardContent
-            sx={{ paddingTop: 0, fontSize: 15, whiteSpace: "pre-wrap" }}
-          >
-            {order}
-          </CardContent>
+
         </Card>
       </div>
-      {/*  </Grid>  */}
-
-      {/*
-        <Grid item md={6}>
-          <center>
-          <Fab
-            sx={{
-              backgroundColor: "#04b2d9",
-              border: "5px solid white",
-              color: "white",
-              marginBottom: "60px",
-              fontSize: 30,
-              marginRight: 5,
-            }}
-            aria-label="add"
-          >
-            <Add />
-          </Fab>
-
-          <Fab
-            sx={{
-              backgroundColor: "#04b2d9",
-              border: "5px solid white",
-              color: "white",
-              marginBottom: "60px",
-              fontSize: 30,
-              marginRight: 5,
-            }}
-            aria-label="add"
-          >
-            ?
-          </Fab>
-
-          <Fab
-            sx={{
-              backgroundColor: "#04b2d9",
-              border: "5px solid white",
-              color: "white",
-              marginBottom: "60px",
-              fontSize: 30,
-              marginRight: 5,
-            }}
-            aria-label="add"
-          >
-            !
-          </Fab>
-          </center>
-        </Grid>
-*/}
-
-      {/*
-      </Grid>
-      */}
     </div>
   );
 };
@@ -212,7 +156,7 @@ export const Orders = (props) => {
               <>
                       <p className="order-date">{date.toLocaleDateString()}</p>         
 
-                <CardContent sx={{ paddingTop: 5, fontSize: 25, zIndex: "10" }}>
+                <CardContent sx={{ paddingTop: 5, fontSize: 20, zIndex: "10" }}>
                   <center>
                     <Rating
                       name="read-only"
@@ -229,16 +173,16 @@ export const Orders = (props) => {
                     <>{order.review}</>
                   )}
 
-                  {order && <hr style={{width: "50%"}} />}
+                  {order && <hr style={{width: "50%", marginBottom: "-2px"}} />}
 
                 </CardContent>
                 <CardContent
-                  sx={{ paddingTop: 0, fontSize: 15, whiteSpace: "pre-wrap" }}
+                  sx={{ paddingTop: 0, marginTop: "-10px", fontSize: "13px", whiteSpace: "pre-wrap" }}
                 >
                   {order.order}
                 </CardContent>
 
-                {index < props.orders.length - 1 && <hr /> }
+                {index < props.orders.length - 1 && <hr style={{marginTop: "-5px", marginBottom: "-10px"}} /> }
               </>
             );
           })}

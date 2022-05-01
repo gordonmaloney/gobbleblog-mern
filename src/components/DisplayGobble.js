@@ -67,7 +67,7 @@ export const DisplayGobble = (props) => {
             {gobble.orders[0].review}
             <br />
             {!changeSummary && (
-              <span style={{ fontSize: "small" }}>(tap to edit summary)</span>
+              <span style={{ fontSize: "12px" }}>(tap to edit summary)</span>
             )}
           </span>
 
@@ -121,7 +121,7 @@ export const DisplayGobble = (props) => {
             {gobble.summary}
             <br />
             {!changeSummary && (
-              <span style={{ fontSize: "small" }}>(tap to edit)</span>
+              <span style={{ fontSize: "12px" }}>(tap to edit)</span>
             )}
           </span>
 
@@ -175,7 +175,7 @@ export const DisplayGobble = (props) => {
                 backgroundColor: "#04b2d9",
                 color: "white",
                 fontFamily: "Archivo Black",
-                fontSize: window.innerWidth > 600 ? 50 : 20,
+                fontSize: window.innerWidth > 600 ? 50 : 25,
                 marginLeft: window.innerWidth > 900 ? "16%" : "5%",
                 border: "5px solid white",
                 width: "fit-content",
@@ -215,7 +215,7 @@ export const DisplayGobble = (props) => {
               zIndex: "7",
             }}
           >
-            <CardContent sx={{ paddingTop: "-10", fontSize: 25, zIndex: "6" }}>
+            <CardContent sx={{ paddingTop: "-10", fontSize: 20, zIndex: "6" }}>
               <div
                 style={{
                   float: "right",

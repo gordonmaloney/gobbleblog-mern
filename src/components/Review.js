@@ -165,7 +165,7 @@ export const Review = () => {
                 id="outlined-multiline-flexible"
                 label="How was it?"
                 multiline
-                rows={4}
+                rows={2}
                 sx={{ marginBottom: 2 }}
                 size="large"
                 value={postData.orders.review}
@@ -191,7 +191,7 @@ export const Review = () => {
                 id="outlined-multiline-flexible"
                 label="What did you get?"
                 multiline
-                rows={4}
+                rows={2}
                 sx={{ marginBottom: 2 }}
                 size="large"
                 value={postData.orders.order}
