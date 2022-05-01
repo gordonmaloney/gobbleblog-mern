@@ -24,7 +24,7 @@ export const AllGobbles = () => {
   }, [location])
 
   const posts = useSelector((state) => state.posts);
-  const reversedPosts = posts.reverse()
+  const reversedPosts = posts.slice(0).reverse()
   let filteredPosts
   
   if (user) filteredPosts = reversedPosts.filter(gobble => gobble.userId == user.result._id)

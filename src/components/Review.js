@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Rating, CardContent, TextField, Box } from "@mui/material";
 import { App } from "./OCR";
 import { useDispatch } from "react-redux";
@@ -26,6 +26,9 @@ export const Review = () => {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
 
   const [postData, setPostData] = useState({
     restaurant: "",

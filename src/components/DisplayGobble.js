@@ -17,6 +17,10 @@ export const DisplayGobble = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const [open, setOpen] = useState(false);
 
   const [deleteConfirmShow, setDeleteConfirmShow] = useState(false);

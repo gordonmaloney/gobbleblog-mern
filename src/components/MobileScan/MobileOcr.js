@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Dropzone from "react-dropzone-uploader";
 import { createWorker } from "tesseract.js";
 import "react-dropzone-uploader/dist/styles.css";
+import logo from "../logo.png";
 
 export const App = ({ setMessage }) => {
   const [orderText, setOrderText] = useState("");
@@ -60,8 +61,19 @@ export const App = ({ setMessage }) => {
   };
 
   return (
-    <React.Fragment>
-      <div>
+    <>
+      <div
+        style={{
+          marginTop: "85px",
+          height: "80vh",
+
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+
         <Dropzone
           style={{ width: "80%", overflow: "hidden" }}
           getUploadParams={getUploadParams}
@@ -86,9 +98,14 @@ export const App = ({ setMessage }) => {
         />
       </div>
 
+
       <center>
-        <h2 style={{ color: "white" }}>{successMsg}</h2>
+        <h2 style={{ color: "white" }}>{successMsg && successMsg}</h2>
+
+        <img src={logo} style={{ height: "80px" }} />
       </center>
+
+
 
       {/*
       <div style={{ color: "white" }}>
@@ -101,6 +118,6 @@ export const App = ({ setMessage }) => {
         )}{" "}
       </div>
 */}
-    </React.Fragment>
+    </>
   );
 };

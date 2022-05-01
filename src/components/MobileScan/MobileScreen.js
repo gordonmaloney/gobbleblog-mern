@@ -20,6 +20,7 @@ export const MobileScreen = ({location}) => {
     const ENDPOINT = 'https://gobbleblog.herokuapp.com/';
     //const ENDPOINT = 'http://localhost:5000'
 
+console.log("TEST")
 
     useEffect(() => {
         const {name, room} = queryString.parse(location.search) 
@@ -28,17 +29,20 @@ export const MobileScreen = ({location}) => {
    
         setName(name);
         setRoom(room)
+
+        
    
-        socket.emit('join', { name, room }, (error) => {
+        name && room && socket.emit('join', { name, room }, (error) => {
          });
    
+         console.log(socket)
          return () => {
              socket.emit('disconnection');
              
              socket.off();
          }
        }, [ENDPOINT, location.search])
-   
+    
    
        useEffect(() => {
            socket.on('message', message => {
@@ -51,7 +55,6 @@ export const MobileScreen = ({location}) => {
        }, []);
    
 
-      console.log(messages)
        //message.text && message.text.length > 20 && sendMessage(message)
 
        const sendMessage = (event) => {
@@ -61,19 +64,16 @@ export const MobileScreen = ({location}) => {
                socket.emit('sendMessage', message, () => setMessage(''))
            }
        }
-       console.log(messages)
 
     useEffect(() => {
-        console.log("test")
        messages.map(newmessage => newmessage.user === "mobileclient" && setMobileScan(newmessage.text))
     }, [messages])
 
     return (
         <div>
+            TEST TEST TEST
             <App setMessage={setMessage} />
             <MobileInput message={message} setMessage={setMessage} sendMessage={sendMessage}/>
-            
-
         </div>
     )
 }
